@@ -4,29 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< HEAD
     public GameObject PauseMenu;
     public bool IsButton = false;
     public bool IsPaused = false;
-
-    void Update()
-    {
-        if(IsButton)
-        {
-            IsPaused = !IsPaused;
-            PauseMenu.SetActive(IsPaused);
-            Time.timeScale = IsPaused ? 0 : 1;
-            IsButton = false;
-        }
-    }
-    public void OnClick()
-    {
-        IsButton = true;
-    }
-=======
     public Vector3 currentCube;
-    private Mode mode = Mode.Tape;
-    enum Mode
+    [HideInInspector]
+    public Mode mode = Mode.Tape;
+
+    public enum Mode
     {
         Canvas,
         Tape
@@ -39,13 +24,30 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    private void Update()
+    void Update()
     {
-        if (mode == Mode.Tape)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            if (mode == Mode.Tape)
+                mode = Mode.Canvas;
+            else
+                mode = Mode.Tape;
+        }
+        if(IsButton)
+        {
+            IsPaused = !IsPaused;
+            PauseMenu.SetActive(IsPaused);
+            Time.timeScale = IsPaused ? 0 : 1;
+            IsButton = false;
         }
     }
+    public void OnClick()
+    {
+        IsButton = true;
+    }
 
->>>>>>> 44cdf3f619dad335ac8542e9304413e975c02977
+    
+
+    
+    
 }

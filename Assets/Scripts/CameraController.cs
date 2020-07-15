@@ -26,16 +26,9 @@ public class CameraController : MonoBehaviour
     {
         Vector3 direction = new Vector3(gameManager.currentCube.x, 0f, gameManager.currentCube.z) - new Vector3(transform.position.x, 0f, transform.position.z);
         r = Vector3.SqrMagnitude(direction);
-        if (r < 0.02)
-        {
-            transform.position += direction * 0.1f;
-        }
-        else
-        {
-            speed = (r + 2) / 100;
-            Debug.Log(direction.normalized * speed);
-            transform.Translate(direction.normalized * speed, Space.World);
-        }
+        speed = (r) / 100 + 0.01f;
+        Debug.Log(direction.normalized * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * speed, Space.World);
     }
 
 }

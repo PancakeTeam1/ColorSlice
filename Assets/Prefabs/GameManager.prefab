@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4528643445104872429
+--- !u!1 &9107316500105404209
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4528643445104872428}
-  - component: {fileID: 6689312004516444144}
+  - component: {fileID: 9107316500105404208}
+  - component: {fileID: 9107316500105404211}
+  - component: {fileID: 9107316500105404210}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,30 +18,45 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4528643445104872428
+--- !u!4 &9107316500105404208
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4528643445104872429}
+  m_GameObject: {fileID: 9107316500105404209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.749261, y: -33.29093, z: 4.438708}
+  m_LocalPosition: {x: 3.8084612, y: 4.3788466, z: 3.9974937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6689312004516444144
+--- !u!114 &9107316500105404211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4528643445104872429}
+  m_GameObject: {fileID: 9107316500105404209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f8cef8b4ec2af45845bb768ff86e2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 48b051a7a7ddd284ebe78a71ab7db5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentCube: {x: 0, y: 0, z: 0}
+--- !u!114 &9107316500105404210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9107316500105404209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7813b1e811832f24ca43d152e2cd6920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 0}
+  IsButton: 0
+  IsPaused: 0

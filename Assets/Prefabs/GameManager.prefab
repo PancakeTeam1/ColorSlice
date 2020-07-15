@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7813b1e811832f24ca43d152e2cd6920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
+  PauseMenu: {fileID: 1820567458741570086, guid: 4c1163fd2dce3f4419c15e535049d4c2,
+    type: 3}
   IsButton: 0
   IsPaused: 0
-  currentCube: {x: 0, y: 0, z: 0}

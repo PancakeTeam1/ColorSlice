@@ -5,13 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject PauseMenu;
+    [HideInInspector]
     public bool IsButton = false;
+    [HideInInspector]
     public bool IsPaused = false;
     public Vector3 currentCube;
     [HideInInspector]
-    public Mode mode = Mode.Tape;
+    private Mode mode = Mode.Tape;
 
-    public enum Mode
+    enum Mode
     {
         Canvas,
         Tape
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
             else
                 mode = Mode.Tape;
         }
-        if(IsButton)
+        if (IsButton)
         {
             IsPaused = !IsPaused;
             PauseMenu.SetActive(IsPaused);
@@ -41,13 +43,9 @@ public class GameManager : MonoBehaviour
             IsButton = false;
         }
     }
+    
     public void OnClick()
     {
         IsButton = true;
     }
-
-    
-
-    
-    
 }

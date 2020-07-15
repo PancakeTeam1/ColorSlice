@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
 
     private GameManager gameManager;
 
-    private void Start()
+    private void Awake()
     {
         gameManager = GameManager.instance;
     }

@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour
     public bool IsPaused = false;
     public Vector3 currentCube;
     [HideInInspector]
-    private Mode mode = Mode.Tape;
+    public Mode mode = Mode.Tape;
 
-    enum Mode
+    public enum Mode
     {
         Canvas,
         Tape

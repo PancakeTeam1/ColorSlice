@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827324679766624385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5907965, y: 3.8834379, z: 3.7693462}
+  m_LocalPosition: {x: 1.2505703, y: -9.165817, z: 7.8266287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,5 +47,5 @@ MonoBehaviour:
     type: 3}
   ArtWidth: 5
   ArtHeight: 5
-  ArtpixelOffset: 1.3
+  ArtpixelOffset: 1.05
   GridOrigin: {x: 0, y: 0, z: 0}

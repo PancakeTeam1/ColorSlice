@@ -64,3 +64,7 @@ Color Slice/Library/SourceAssetDB
 Color Slice/Assets/Scenes/SampleScene.unity
 Color Slice/Assets/Scenes/SampleScene.unity
 Color Slice/Library/SourceAssetDB
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectVersion.txt
+*.meta
+ProjectSettings/ProjectVersion.txt

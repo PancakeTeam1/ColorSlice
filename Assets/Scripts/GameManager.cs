@@ -4,26 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< HEAD
-    public GameObject PauseMenu;
-    public bool IsButton = false;
-    public bool IsPaused = false;
-
-    void Update()
-    {
-        if(IsButton)
-        {
-            IsPaused = !IsPaused;
-            PauseMenu.SetActive(IsPaused);
-            Time.timeScale = IsPaused ? 0 : 1;
-            IsButton = false;
-        }
-    }
-    public void OnClick()
-    {
-        IsButton = true;
-    }
-=======
     public Vector3 currentCube;
     private Mode mode = Mode.Tape;
     enum Mode
@@ -46,6 +26,4 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
->>>>>>> 44cdf3f619dad335ac8542e9304413e975c02977
 }

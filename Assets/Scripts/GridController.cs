@@ -13,13 +13,10 @@ public class GridController : MonoBehaviour
     private CameraController cam;
     private GameManager gameManager;
 
-    private void Awake()
-    {
-        cam = Camera.main.GetComponent<CameraController>();
-    }
 
     void Start()
     {
+        cam = Camera.main.GetComponent<CameraController>();
         gameManager = GameManager.instance;
         SpawnGrid();
         //float camXOffset = ArtWidth / 2 + (ArtWidth - 2) * (ArtpixelOffset - 1) / 2 + GridOrigin.x;

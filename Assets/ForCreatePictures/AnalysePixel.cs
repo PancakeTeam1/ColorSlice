@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class AnalysePixel
 {
-    static public Color[,] Analyse(Texture2D tex, int row, int col, int offX, int offY, int padX, int padY)
+    static public Color[,] Analyse(Texture2D texture, int numberOfArtpixelsInRow, int numberOfArtpixelsInColumn, int offsetX, int offsetY, int paddingX, int paddingY)
     {
-        Color[,] allColors = new Color[tex.width, tex.height];
-        for (int i = 0; i < tex.width; i++)
+        Color[,] allColors = new Color[texture.width, texture.height];
+        for (int i = 0; i < texture.width; i++)
         {
-            for (int j = 0; j < tex.height; j++)
+            for (int j = 0; j < texture.height; j++)
             {
-                Color colos = tex.GetPixel(i, tex.height - j);
+                Color colos = texture.GetPixel(i, texture.height - j);
                 if (i == 134 && j == 84)
                 {
                     Debug.Log(colos);
                 }
-                allColors[i, j] = tex.GetPixel(tex.width - i, tex.height - j);
+                allColors[i, j] = texture.GetPixel(texture.width - i, texture.height - j);
             }
         }
-        int width_sec = (tex.width - offX - padX * (row - 1)) / row;
-        int height_sec = (tex.height - offY - padY * (col - 1)) / col;
+        int width_sec = (texture.width - offsetX - paddingX * (numberOfArtpixelsInRow - 1)) / numberOfArtpixelsInRow;
+        int height_sec = (texture.height - offsetY - paddingY * (numberOfArtpixelsInColumn - 1)) / numberOfArtpixelsInColumn;
         Debug.Log(width_sec + " " + height_sec);
-        Sector[,] sectors = new Sector[row, col];
-        for (int i = 0; i < row; i++)
+        Sector[,] sectors = new Sector[numberOfArtpixelsInRow, numberOfArtpixelsInColumn];
+        for (int i = 0; i < numberOfArtpixelsInRow; i++)
         {
-            for (int j = 0; j < col; j++)
+            for (int j = 0; j < numberOfArtpixelsInColumn; j++)
             {
-                sectors[i, j] = new Sector(offX + (height_sec + padY) * i, offY + (width_sec + padX) * j, width_sec, height_sec);
+                sectors[i, j] = new Sector(offsetX + (height_sec + paddingY) * i, offsetY + (width_sec + paddingX) * j, width_sec, height_sec);
             }
         }
 
-        Color[,] colors = new Color[row, col];
-        for (int i = 0; i < row; i++)
+        Color[,] colors = new Color[numberOfArtpixelsInRow, numberOfArtpixelsInColumn];
+        for (int i = 0; i < numberOfArtpixelsInRow; i++)
         {
-            for (int j = 0; j < col; j++)
+            for (int j = 0; j < numberOfArtpixelsInColumn; j++)
             {
                 int[] coord = sectors[i, j].GetCenter();
                 colors[i, j] = allColors[coord[0], coord[1]];

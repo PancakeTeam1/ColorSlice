@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/MainMenuDoNotTouch.unity
+    guid: f46a409853f770c4b9c0462e70a94e06
+  - enabled: 1
+    path: Assets/Scenes/DoNotTouch.unity
+    guid: 47c45a5182ff303468494e18fb3e5002
   m_configObjects: {}

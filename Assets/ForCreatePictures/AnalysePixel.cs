@@ -12,16 +12,11 @@ public class AnalysePixel
             for (int j = 0; j < texture.height; j++)
             {
                 Color colos = texture.GetPixel(i, texture.height - j);
-                if (i == 134 && j == 84)
-                {
-                    Debug.Log(colos);
-                }
                 allColors[i, j] = texture.GetPixel(texture.width - i, texture.height - j);
             }
         }
         int width_sec = (texture.width - offsetX - paddingX * (numberOfArtpixelsInRow - 1)) / numberOfArtpixelsInRow;
         int height_sec = (texture.height - offsetY - paddingY * (numberOfArtpixelsInColumn - 1)) / numberOfArtpixelsInColumn;
-        Debug.Log(width_sec + " " + height_sec);
         Sector[,] sectors = new Sector[numberOfArtpixelsInRow, numberOfArtpixelsInColumn];
         for (int i = 0; i < numberOfArtpixelsInRow; i++)
         {
@@ -38,7 +33,6 @@ public class AnalysePixel
             {
                 int[] coord = sectors[i, j].GetCenter();
                 colors[i, j] = allColors[coord[0], coord[1]];
-                Debug.Log(colors[i, j]);
             }
         }
         return colors;

@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float Speed;
-
+    public float Speed = 1.5f;
+    public float offsetZ = 0.5f;
+    public float offsetX = 1;
+    public int LengthAreaX = 6;
+    private float averageY;
     [HideInInspector] public Vector3 defaultPos;
-    public GameManager gameManager;
+    private GameManager gameManager;
+    private GridController gridController;
+
+    private void Start()
+    {
+        gameManager = GameManager.instance;
+        gridController = GridController.instance;
+        this.transform.position += new Vector3(0f, -this.transform.position.y + Mathf.Lerp(gridController.CenterCube.y, this.transform.position.y, (float)LengthAreaX / gridController.ArtHeight), 0f);
+    }
 
     private void Update()
     {
@@ -16,6 +27,7 @@ public class CameraController : MonoBehaviour
 
     private void Move()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(gameManager.CurrentCube.x, this.transform.position.y, gameManager.CurrentCube.z), Time.deltaTime * Speed);
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(gameManager.CurrentCube.x, this.transform.position.y, gameManager.CurrentCube.z) + new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), 0f, offsetZ), Time.deltaTime * Speed);
+        // 
     }
 }

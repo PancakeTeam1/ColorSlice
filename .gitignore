@@ -68,3 +68,5 @@ ProjectSettings/ProjectVersion.txt
 ProjectSettings/ProjectVersion.txt
 *.meta
 ProjectSettings/ProjectVersion.txt
+
+ProjectSettings/Packages/com.unity.probuilder/Settings.json

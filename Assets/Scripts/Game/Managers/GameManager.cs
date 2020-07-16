@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Vector3 SetCurrentCube;
-    public GridController GridController;
-    [HideInInspector] public Vector3 CurrentCube;
-    [HideInInspector] public float CurrentCubeX;
-    [HideInInspector] public float CurrentCubeZ;
+    public Vector3 CurrentCube;
+    private GridController gridController;
 
-    private void Update()
+    public static GameManager instance;
+
+    private void Awake()
     {
-        CurrentCube = GetCurrentCubePosition();
+        instance = this;
     }
 
-    public Vector3 GetCurrentCubePosition()
-    { 
-        CurrentCubeX = GridController.CubeCoordinates[(int) SetCurrentCube.x, (int) SetCurrentCube.z, 0];
-        CurrentCubeZ = GridController.CubeCoordinates[(int) SetCurrentCube.x, (int) SetCurrentCube.z, 1];
-        return new Vector3(CurrentCubeX, 0, CurrentCubeZ);
+    private void Start()
+    {
+        gridController = GridController.instance;
+        CurrentCube = gridController.CubeCoordinates[0, 0];
     }
 }

@@ -1356,7 +1356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectToSpawn: {fileID: 3611290656094942886, guid: 9e8c05f1c4b08d240b64a51bdba60aa7,
     type: 3}
-  ArtWidth: 5
-  ArtHeight: 5
+  ArtWidth: 7
+  ArtHeight: 7
   ArtpixelOffset: 1.05
+  scaleValue: 0
   GridOrigin: {x: 0, y: 0, z: 0}

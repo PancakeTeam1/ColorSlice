@@ -8,6 +8,7 @@ public class GridController : MonoBehaviour
     public GameObject ObjectToSpawn;
     public float ArtWidth, ArtHeight;
     public float ArtpixelOffset;
+    [HideInInspector] public float scaleValue;
     public Vector3 GridOrigin = new Vector3(0, 0, 0);
 
     private CameraController cam;
@@ -27,15 +28,15 @@ public class GridController : MonoBehaviour
         //float camZOffset = (ArtHeight / 2 + GridOrigin.z) * 0.5f;
     }
 
-    float Scale()
+    void Scale()
     {
         float x = cam.transform.position.y * 0.58f;
-        float scaleValue = x / ((ArtWidth + (ArtWidth - 2) * (ArtpixelOffset - 1)) / 2);
-        return scaleValue;
+        scaleValue = x / ((ArtWidth + (ArtWidth - 2) * (ArtpixelOffset - 1)) / 2);
     }
     void SpawnGrid()
     {
-        float scale = Scale() * 0.5f;
+        Scale();
+        float scale = scaleValue * 0.5f;
         for (int x = 0; x < ArtWidth; x++)
         {
             for (int z = 0; z < ArtHeight; z++)

@@ -5,16 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Vector3 currentCube;
-    [HideInInspector]
-    public Mode mode = Mode.Tape;
-
-    public enum Mode
-    {
-        Canvas,
-        Tape
-    }
-
+    [HideInInspector] public Mode mode = Mode.Tape;
     public static GameManager instance;
+
+    public enum Mode {Canvas, Tape}
 
     private void Awake()
     {

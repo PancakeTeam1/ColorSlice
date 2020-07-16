@@ -873,6 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ea12200674af540baed577be1816e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   defaultPos: {x: 0, y: 0, z: 0}
   gameManager: {fileID: 1596708010}
 --- !u!81 &1040689433
@@ -1526,8 +1527,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7813b1e811832f24ca43d152e2cd6920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCube: {x: 0, y: 0, z: 0}
-  mode: 1
+  SetCurrentCube: {x: 0, y: 0, z: 0}
+  GridController: {fileID: 671950612}
+  CurrentCube: {x: 0, y: 0, z: 0}
+  CurrentCubeX: 0
+  CurrentCubeZ: 0
 --- !u!4 &1596708011
 Transform:
   m_ObjectHideFlags: 0

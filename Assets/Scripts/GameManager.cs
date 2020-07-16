@@ -4,25 +4,21 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Vector3 currentCube;
-    [HideInInspector] public Mode mode = Mode.Tape;
-    public static GameManager instance;
+    public Vector3 SetCurrentCube;
+    public GridController GridController;
+    [HideInInspector] public Vector3 CurrentCube;
+    [HideInInspector] public float CurrentCubeX;
+    [HideInInspector] public float CurrentCubeZ;
 
-    public enum Mode {Canvas, Tape}
-
-    private void Awake()
+    private void Update()
     {
-        instance = this;
+        CurrentCube = GetCurrentCubePosition();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (mode == Mode.Tape)
-                mode = Mode.Canvas;
-            else
-                mode = Mode.Tape;
-        }
+    public Vector3 GetCurrentCubePosition()
+    { 
+        CurrentCubeX = GridController.CubeCoordinates[(int) SetCurrentCube.x, (int) SetCurrentCube.z, 0];
+        CurrentCubeZ = GridController.CubeCoordinates[(int) SetCurrentCube.x, (int) SetCurrentCube.z, 1];
+        return new Vector3(CurrentCubeX, 0, CurrentCubeZ);
     }
 }

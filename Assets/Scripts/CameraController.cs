@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private float speed = 0f;
-    private float r;
+    public float Speed;
 
     [HideInInspector] public Vector3 defaultPos;
     public GameManager gameManager;
@@ -17,10 +16,6 @@ public class CameraController : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction = new Vector3(gameManager.currentCube.x, 0f, gameManager.currentCube.z) - new Vector3(this.transform.position.x, 0f, this.transform.position.z);
-        r = Vector3.SqrMagnitude(direction);
-        speed = (r) / 100 + 0.01f;
-        //Debug.Log(direction.normalized * speed * Time.deltaTime);
-        transform.Translate(direction.normalized * speed, Space.World);
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(gameManager.CurrentCube.x, this.transform.position.y, gameManager.CurrentCube.z), Time.deltaTime * Speed);
     }
 }

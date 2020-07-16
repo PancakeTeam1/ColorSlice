@@ -6,13 +6,14 @@ using UnityEngine;
 public class GridController : MonoBehaviour
 {
     public GameObject ObjectToSpawn;
-    public float ArtWidth, ArtHeight;
+    public float ArtWidth;
+    public float ArtHeight;
     public float ArtpixelOffset;
     [HideInInspector] public float scaleValue;
+    [HideInInspector] public float[,,] CubeCoordinates;
     public Vector3 GridOrigin = new Vector3(0, 0, 0);
 
     private CameraController cam;
-    private GameManager gameManager;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class GridController : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameManager.instance;
+        CubeCoordinates = new float[(int) ArtWidth, (int) ArtHeight, 2];
         SpawnGrid();
         //float camXOffset = ArtWidth / 2 + (ArtWidth - 2) * (ArtpixelOffset - 1) / 2 + GridOrigin.x;
         //float camYOffset = ArtWidth / 0.58f + GridOrigin.y; 
@@ -42,10 +43,10 @@ public class GridController : MonoBehaviour
             for (int z = 0; z < ArtHeight; z++)
             {
                 Vector3 spawnPosition = new Vector3(x * ArtpixelOffset * scale, 0, z * ArtpixelOffset * scale) + GridOrigin;
-                if (z == 0 && x == 0)
-                    gameManager.currentCube = spawnPosition;
                 GameObject clone = Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity);
                 clone.transform.localScale = new Vector3(scale, scale, scale);
+                CubeCoordinates[x, z, 0] = spawnPosition.x;
+                CubeCoordinates[x, z, 1] = spawnPosition.z;
             }
         }
         float currentSizeX = (ArtWidth - 1 + (ArtWidth - 1) * (ArtpixelOffset - 1)) * scale / 2;

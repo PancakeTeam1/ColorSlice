@@ -668,7 +668,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1461835544}
+      - m_Target: {fileID: 1461835545}
         m_MethodName: Hit
         m_Mode: 1
         m_Arguments:
@@ -751,6 +751,7 @@ MonoBehaviour:
   ArtHeight: 16
   ArtpixelOffset: 1.05
   scaleValue: 0
+  CenterCube: {x: 0, y: 0, z: 0}
   GridOrigin: {x: 0, y: 0, z: 0}
 --- !u!4 &671950613
 Transform:
@@ -876,8 +877,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 2
+  offsetZ: 0.5
+  offsetX: 1
+  LengthAreaX: 6
   defaultPos: {x: 0, y: 0, z: 0}
-  gameManager: {fileID: 1596708010}
 --- !u!81 &1040689433
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1341,7 +1344,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1461835544
+--- !u!114 &1461835545
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1350,7 +1353,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1461835541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62fd074713b8324abb33c16a35e06f9, type: 3}
+  m_Script: {fileID: 11500000, guid: fc7f8a7c22b01f146bc103beb712c49b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 1461835543}
@@ -1529,11 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7813b1e811832f24ca43d152e2cd6920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetCurrentCube: {x: 0, y: 0, z: 0}
-  GridController: {fileID: 671950612}
   CurrentCube: {x: 0, y: 0, z: 0}
-  CurrentCubeX: 0
-  CurrentCubeZ: 0
 --- !u!4 &1596708011
 Transform:
   m_ObjectHideFlags: 0

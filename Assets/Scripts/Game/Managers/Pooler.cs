@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Pooler : MonoBehaviour
+public class Pooler : Manager<Pooler>
 {
     public List<Pool> pools;
 

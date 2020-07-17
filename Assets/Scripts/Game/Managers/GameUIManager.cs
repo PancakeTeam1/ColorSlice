@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameUIManager : MonoBehaviour
+public class GameUIManager : Manager<GameUIManager>
 {
     public GameObject PauseMenu;
     public bool IsButton = false;

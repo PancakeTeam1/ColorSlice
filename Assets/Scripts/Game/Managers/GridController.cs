@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 
-public class GridController : MonoBehaviour
+public class GridController : Manager<GridController>
 {
     public GameObject ObjectToSpawn;
     public int ArtWidth;
@@ -14,13 +14,12 @@ public class GridController : MonoBehaviour
     [HideInInspector] public Vector3 CenterCube;
     public Vector3 GridOrigin = new Vector3(0, 0, 0);
 
-    public static GridController instance;
-
     private CameraController cam;
+    private GameManager gameManager;
 
     private void Awake()
     {
-        instance = this;
+        gameManager = GameManager.Instance;
         CubeCoordinates = new Vector3[ArtWidth, ArtHeight];
         cam = Camera.main.GetComponent<CameraController>();
         SpawnGrid();
@@ -30,12 +29,14 @@ public class GridController : MonoBehaviour
     {
         float x = cam.transform.position.y * 0.58f;
         scaleValue = x / ((ArtWidth + (ArtWidth - 2) * (ArtpixelOffset - 1)) / 2);
+        
     }
 
     void SpawnGrid()
     {
         Scale();
         float scale = scaleValue * 0.5f;
+        gameManager.scaleValue = scale;
         for (int x = 0; x < ArtWidth; x++)
         {
             for (int z = 0; z < ArtHeight; z++)

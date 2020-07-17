@@ -7,7 +7,7 @@ public class CubeInBandMovement : MonoBehaviour
     public float speed = 15f;
     private BandGenerator generator;
 
-    private void Awake()
+    private void Start()
     {
         generator = transform.parent.GetComponent<BandGenerator>();
     }
@@ -16,5 +16,9 @@ public class CubeInBandMovement : MonoBehaviour
     {
         Vector3 changed = (generator.endPoint - generator.startPoint).normalized * speed * Time.deltaTime;
         transform.Translate(changed);
+        if ((transform.position - generator.startPoint).sqrMagnitude >= (generator.endPoint - generator.startPoint).sqrMagnitude)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -15,8 +15,8 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
-        gridController = GridController.instance;
+        gameManager = GameManager.Instance;
+        gridController = GridController.Instance;
         this.transform.position += new Vector3(0f, -this.transform.position.y + Mathf.Lerp(gridController.CenterCube.y, this.transform.position.y, (float)LengthAreaX / gridController.ArtHeight), 0f);
     }
 

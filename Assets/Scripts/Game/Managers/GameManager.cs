@@ -2,21 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Manager<GameManager>
 {
     public Vector3 CurrentCube;
     private GridController gridController;
-
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
+    public float scaleValue;
 
     private void Start()
     {
-        gridController = GridController.instance;
+        gridController = GridController.Instance;
         CurrentCube = gridController.CubeCoordinates[0, 0];
     }
 }

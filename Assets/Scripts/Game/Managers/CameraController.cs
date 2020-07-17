@@ -27,7 +27,6 @@ public class CameraController : MonoBehaviour
 
     private void Move()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(gameManager.CurrentCube.x, this.transform.position.y, gameManager.CurrentCube.z) + new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), 0f, offsetZ), Time.deltaTime * Speed);
-        // 
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), transform.position.y, offsetZ), Time.deltaTime * Speed);
     }
 }

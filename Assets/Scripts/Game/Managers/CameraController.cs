@@ -7,9 +7,10 @@ public class CameraController : MonoBehaviour
     public float Speed = 1.5f;
     public float offsetZ = 0.5f;
     public float offsetX = 1;
+    public bool ViewSwitch = true;
     public int LengthAreaX = 6;
     private float averageY;
-    [HideInInspector] public Vector3 defaultPos;
+    public Vector3 defaultPos;
     private GameManager gameManager;
     private GridController gridController;
 
@@ -17,16 +18,21 @@ public class CameraController : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         gridController = GridController.Instance;
-        this.transform.position += new Vector3(0f, -this.transform.position.y + Mathf.Lerp(gridController.CenterCube.y, this.transform.position.y, (float)LengthAreaX / gridController.ArtHeight), 0f);
     }
 
     private void Update()
     {
-        Move();
+        if (ViewSwitch)
+            WatchOnArt();
+        else
+            WatchOnArtpixel();
     }
-
-    private void Move()
+    public void WatchOnArtpixel()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), transform.position.y, offsetZ), Time.deltaTime * Speed);
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), defaultPos.y, offsetZ), Time.deltaTime * Speed);
+    }
+    public void WatchOnArt()
+    {
+        this.transform.position = Vector3.Lerp(this.transform.position, gridController.CamOffset, Time.deltaTime * Speed);
     }
 }

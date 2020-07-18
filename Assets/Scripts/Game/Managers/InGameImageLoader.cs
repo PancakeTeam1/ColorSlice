@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameImageLoader : MonoBehaviour
+public class InGameImageLoader : Manager<InGameImageLoader>
 {
     public List<Texture2D> Texture;
     public List<int> RowSize;

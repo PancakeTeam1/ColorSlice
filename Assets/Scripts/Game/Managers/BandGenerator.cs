@@ -18,6 +18,7 @@ public class BandGenerator : Manager<BandGenerator>
 
     private Pooler pooler;
     private GameManager gameManager;
+    private ColorIndicator colorIndicator;
 
     private void Awake()
     {

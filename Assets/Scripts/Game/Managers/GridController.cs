@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.UI;
+
+
+
 public class GridController : Manager<GridController>
 {
     public Texture2D tex;
@@ -38,17 +40,17 @@ public class GridController : Manager<GridController>
         {
             for (int z = 0; z < ArtHeight; z++)
             {
-                Vector3 spawnPosition = new Vector3(x * ArtpixelOffset * scale, 0, z * ArtpixelOffset * scale) + GridOrigin;
-                GameObject clone = Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity);
-                clone.transform.localScale = new Vector3(scale, scale, scale);
+                Vector3 spawnPosition = new Vector3(x * ArtpixelOffset, 0, z * ArtpixelOffset) + GridOrigin;
+                GameObject clone =  Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity);
                 Cubes[x, z] = clone;
             }
-        }
+        }
+
         camXOffset = ArtWidth / 2 - 0.5f + (ArtWidth - 1) * (ArtpixelOffset - 1) / 2 + GridOrigin.x;
         camYOffset = ArtWidth / 0.5f + GridOrigin.y;
         camZOffset = (ArtHeight / 2 + GridOrigin.z) * 0.5f;
         CamOffset = new Vector3(camXOffset, camYOffset, camZOffset);
-        CenterCube = (CubeCoordinates[ArtHeight - 1, ArtWidth - 1] - CubeCoordinates[0, 0]) * 0.5f;
+        //CenterCube = (CubeCoordinates[ArtHeight - 1, ArtWidth - 1] - CubeCoordinates[0, 0]) * 0.5f;
     }
 
     private void SetPicture()

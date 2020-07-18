@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,7 +52,7 @@ public class AnalysePixel
 
         public int[] GetCenter()
         {
-            return new int[] { (x + w) / 2, (y + h) / 2 };
+            return new int[] { x + w / 2, y + h / 2 };
         }
     }
 }

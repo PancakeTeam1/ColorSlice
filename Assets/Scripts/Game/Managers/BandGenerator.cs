@@ -5,7 +5,8 @@ using UnityEngine;
 public class BandGenerator : MonoBehaviour
 {
     public GameObject PrefabCube;
-    public float distance;
+    public float Distance;
+    public Color[] Colors;
 
     [HideInInspector]
     public Vector3 startPoint;
@@ -22,7 +23,8 @@ public class BandGenerator : MonoBehaviour
     private void Awake()
     {
         startPoint = transform.Find("StartPoint").position;
-        endPoint = transform.Find("EndPoint").position;    }
+        endPoint = transform.Find("EndPoint").position;
+    }
 
     private void Start()
     {
@@ -33,10 +35,11 @@ public class BandGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (lastCube == null || currentDistance >= distance)
+        if (lastCube == null || currentDistance >= Distance)
         {
             lastCube = pooler.SpawnFromPull(PrefabCube, startPoint, transform);
             lastCube.transform.localScale = new Vector3(localScale, localScale, localScale);
+            lastCube.GetComponent<Renderer>().materials[0].color = Colors[Random.Range(0, Colors.Length)];
             currentDistance = 0;
             lastCubePos = startPoint;
         }

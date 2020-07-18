@@ -11,6 +11,8 @@ public class GameManager : Manager<GameManager>
     private void Start()
     {
         gridController = GridController.Instance;
-        CurrentCube = gridController.CubeCoordinates[0, 0];
+        CurrentCube = gridController.Cubes[0, 0].transform.position;
     }
+
+    
 }

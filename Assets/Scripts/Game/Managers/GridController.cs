@@ -41,8 +41,7 @@ public class GridController : Manager<GridController>
             for (int z = 0; z < ArtHeight; z++)
             {
                 Vector3 spawnPosition = new Vector3(x * ArtpixelOffset, 0, z * ArtpixelOffset) + GridOrigin;
-                GameObject clone =  Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity);
-                Cubes[x, z] = clone;
+                Cubes[x, z] = Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity);
             }
         }
 
@@ -50,7 +49,7 @@ public class GridController : Manager<GridController>
         camYOffset = ArtWidth / 0.5f + GridOrigin.y;
         camZOffset = (ArtHeight / 2 + GridOrigin.z) * 0.5f;
         CamOffset = new Vector3(camXOffset, camYOffset, camZOffset);
-        //CenterCube = (CubeCoordinates[ArtHeight - 1, ArtWidth - 1] - CubeCoordinates[0, 0]) * 0.5f;
+        CenterCube = Vector3.Lerp(Cubes[ArtWidth - 1, ArtHeight - 1].transform.position, Cubes[0, 0].transform.position, 0.5f);
     }
 
     private void SetPicture()

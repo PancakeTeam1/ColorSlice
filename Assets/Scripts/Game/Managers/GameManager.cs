@@ -6,7 +6,6 @@ public class GameManager : Manager<GameManager>
 {
     public Vector3 CurrentCube;
     private GridController gridController;
-    public float scaleValue;
 
     private void Start()
     {

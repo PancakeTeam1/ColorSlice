@@ -54,7 +54,7 @@ public class InGameImageLoader : MonoBehaviour
         }
         return NotNormalizedColors;
     }
-       
+    
     public List<Color> GetAllColors()
     {
         return NormalizedColors;

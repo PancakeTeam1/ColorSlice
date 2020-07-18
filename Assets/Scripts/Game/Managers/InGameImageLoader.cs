@@ -12,16 +12,16 @@ public class InGameImageLoader : MonoBehaviour
     public List<int> PaddingX;
     public List<int> PaddingY;
 
-
     public float MaxDifference = 0.15f;
     public int NumberOfCurrentPicture = 0;
+    private List<Color> NormalizedColors;
 
     public Color[,] CreatePicture(int NumberOfPicture)
     {
         int CurrentRowSize = RowSize[NumberOfPicture];
         int CurrentColumnSize = ColumnSize[NumberOfPicture];
-
-        List<Color> NormalizedColors = new List<Color>();
+        NormalizedColors.Clear();
+        NormalizedColors = new List<Color>();
         Color[,] NotNormalizedColors = AnalysePixel.Analyse(Texture[NumberOfPicture], CurrentRowSize, CurrentColumnSize, OffsetX[NumberOfPicture], OffsetY[NumberOfPicture], PaddingX[NumberOfPicture], PaddingY[NumberOfPicture]);
 
         for(int row = 0; row < CurrentRowSize; row++)
@@ -54,7 +54,12 @@ public class InGameImageLoader : MonoBehaviour
         }
         return NotNormalizedColors;
     }
-       
+    
+    public List<Color> GetAllColors()
+    {
+        return NormalizedColors;
+    }
+
     public float CalculateDistanceBetweenColors(Color BaseColor, Color CompareColor)
     {
         float R = BaseColor.r - CompareColor.r;

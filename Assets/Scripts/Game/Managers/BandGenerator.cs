@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BandGenerator : MonoBehaviour
+public class BandGenerator : Manager<BandGenerator>
 {
     public GameObject PrefabCube;
     public float Distance;
@@ -31,18 +31,22 @@ public class BandGenerator : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    private void Update()
+    public IEnumerator StartGeneration(Color[] colors)
     {
-        if (lastCube == null || currentDistance >= Distance)
+        while (true)
         {
-            lastCube = pooler.SpawnFromPull(PrefabCube, startPoint, transform);
-            lastCube.GetComponent<Renderer>().materials[0].color = Colors[Random.Range(0, Colors.Length)];
-            currentDistance = 0;
-            lastCubePos = startPoint;
-        }
-        else
-        {
-            currentDistance += (lastCube.transform.position - lastCubePos).magnitude;
+            if (lastCube == null || currentDistance >= Distance)
+            {
+                lastCube = pooler.SpawnFromPull(PrefabCube, startPoint, transform);
+                lastCube.GetComponent<Renderer>().materials[0].color = Colors[Random.Range(0, Colors.Length)];
+                currentDistance = 0;
+                lastCubePos = startPoint;
+            }
+            else
+            {
+                currentDistance += (lastCube.transform.position - lastCubePos).magnitude;
+            }
+            yield return null;
         }
     }
 }

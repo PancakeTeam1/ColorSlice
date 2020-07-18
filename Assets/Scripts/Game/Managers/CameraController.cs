@@ -11,12 +11,13 @@ public class CameraController : MonoBehaviour
     public int LengthAreaX = 6;
     private float averageY;
     private float distanceToCanvas;
-    public Vector3 defaultPos;
     private GameManager gameManager;
     private GridController gridController;
+    public Vector3 defaultPos;
 
     private void Start()
     {
+        transform.position = defaultPos;
         gameManager = GameManager.Instance;
         gridController = GridController.Instance;
         distanceToCanvas = Mathf.Lerp(gridController.CenterCube.y, gridController.CamOffset.y, (float)LengthAreaX / gridController.ArtHeight);
@@ -35,6 +36,6 @@ public class CameraController : MonoBehaviour
     }
     public void WatchOnArt()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, gridController.CamOffset, Time.deltaTime * Speed);
+        this.transform.position = Vector3.Lerp(this.transform.position, defaultPos, Time.deltaTime * Speed);
     }
 }

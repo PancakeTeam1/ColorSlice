@@ -307,9 +307,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 332902408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62fd074713b8324abb33c16a35e06f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 463e22f6c65a7674ab74f64459cf62f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
 --- !u!1 &363992033
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442267910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.19, z: 0}
+  m_LocalPosition: {x: 0, y: 4.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1013035003}
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabCube: {fileID: 5456812439970720439, guid: cd9ca4d11577db44dbba3d6b8712a69d,
     type: 3}
-  Distance: 0.99
+  Distance: 31
   Colors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 0.13914871, b: 1, a: 0}
@@ -1239,6 +1240,10 @@ MonoBehaviour:
   ArtpixelOffset: 1.05
   scaleValue: 0
   CenterCube: {x: 0, y: 0, z: 0}
+  CamOffset: {x: 0, y: 0, z: 0}
+  camXOffset: 0
+  camYOffset: 0
+  camZOffset: 0
   GridOrigin: {x: 0, y: 0, z: 0}
 --- !u!4 &1452695853
 Transform:
@@ -1333,7 +1338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCube: {x: 3, y: 0, z: 0}
-  scaleValue: 0
 --- !u!114 &1585946747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1499,8 +1503,8 @@ MonoBehaviour:
   Speed: 1.5
   offsetZ: 0
   offsetX: 2
+  ViewSwitch: 1
   LengthAreaX: 6
-  defaultPos: {x: 0, y: 0, z: 0}
 --- !u!81 &1715698364
 AudioListener:
   m_ObjectHideFlags: 0

@@ -18,15 +18,15 @@ public class VibrationButton : MonoBehaviour
 
     public void ChangeCondition()
     {
-        if (Sound)
+        if (Vibration)
         {
             imageLoader.sprite = VibrationOffImage;
-            Sound = false;
+            Vibration = false;
         }
         else
         {
             imageLoader.sprite = VibrationOnImage;
-            Sound = true;
+            Vibration = true;
         }
     }
 }

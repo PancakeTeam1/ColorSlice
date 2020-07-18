@@ -48,6 +48,7 @@ public class InGameImageLoader : MonoBehaviour
                 else
                 {
                     NormalizedColors.Add(CurrentColor);
+                    
                 }
             }
         }

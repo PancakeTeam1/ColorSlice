@@ -15,7 +15,6 @@ public class BandGenerator : MonoBehaviour
     private Vector3 lastCubePos;
     private GameObject lastCube;
     private float currentDistance;
-    private float localScale;
 
     private Pooler pooler;
     private GameManager gameManager;
@@ -30,7 +29,6 @@ public class BandGenerator : MonoBehaviour
     {
         pooler = Pooler.instance;
         gameManager = GameManager.Instance;
-        localScale = gameManager.scaleValue;
     }
 
     private void Update()
@@ -38,7 +36,6 @@ public class BandGenerator : MonoBehaviour
         if (lastCube == null || currentDistance >= Distance)
         {
             lastCube = pooler.SpawnFromPull(PrefabCube, startPoint, transform);
-            lastCube.transform.localScale = new Vector3(localScale, localScale, localScale);
             lastCube.GetComponent<Renderer>().materials[0].color = Colors[Random.Range(0, Colors.Length)];
             currentDistance = 0;
             lastCubePos = startPoint;

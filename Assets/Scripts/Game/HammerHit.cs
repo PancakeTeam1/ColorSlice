@@ -6,7 +6,7 @@ public class HammerHit : MonoBehaviour
 {
     private Animator Animator;
 
-    private void Start()
+    private void Awake()
     {
         Animator = this.GetComponent<Animator>();
     }

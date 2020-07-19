@@ -14,9 +14,9 @@ public class CubeInBandMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 changed = (generator.endPoint - generator.startPoint).normalized * speed * Time.deltaTime;
+        Vector3 changed = (generator.endPoint.localPosition - generator.startPoint.localPosition).normalized * speed * Time.deltaTime;
         transform.Translate(changed);
-        if ((transform.position - generator.startPoint).sqrMagnitude >= (generator.endPoint - generator.startPoint).sqrMagnitude)
+        if ((transform.localPosition - generator.startPoint.localPosition).sqrMagnitude >= (generator.endPoint.localPosition - generator.startPoint.localPosition).sqrMagnitude)
         {
             gameObject.SetActive(false);
         }

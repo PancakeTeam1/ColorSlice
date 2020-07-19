@@ -289,7 +289,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 61.892002, y: 76.073006, z: 81.063}
 --- !u!1 &296411275
 GameObject:
@@ -420,36 +420,6 @@ RectTransform:
   m_AnchoredPosition: {x: 85.80005, y: -101.3999}
   m_SizeDelta: {x: 84.70853, y: 95.03635}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &349965283
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 349965284}
-  m_Layer: 0
-  m_Name: BandSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &349965284
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349965283}
-  m_LocalRotation: {x: -0.66619825, y: 0, z: -0, w: 0.74577475}
-  m_LocalPosition: {x: -6.4, y: -0.16, z: 1.73}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 917874773}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &450458315
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCube: {x: 0, y: 0, z: 0}
+  BandGeneratorObject: {fileID: 1401869863}
 --- !u!4 &693937041
 Transform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1190,7 @@ MonoBehaviour:
   Speed: 1.5
   offsetZ: 0.5
   offsetX: 1
-  ViewSwitch: 1
+  ViewSwitch: 0
   LengthAreaX: 6
   defaultPos: {x: 0, y: 0, z: 0}
 --- !u!81 &917874771
@@ -1285,7 +1256,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 458640821}
-  - {fileID: 349965284}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -1321,10 +1291,7 @@ MonoBehaviour:
   PrefabCube: {fileID: 5456812439970720439, guid: f166e521a257665458d84961edd693b5,
     type: 3}
   Distance: 30
-  Colors:
-  - {r: 0.9811321, g: 0.032395888, b: 0.032395888, a: 0}
-  - {r: 0.043137252, g: 0.11503775, b: 1, a: 0}
-  - {r: 0.20992278, g: 0.9716981, b: 0, a: 0}
+  Colors: []
   startPoint: {x: 0, y: 0, z: 0}
   endPoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1401869865
@@ -1341,7 +1308,7 @@ Transform:
   - {fileID: 164064966}
   - {fileID: 2048160055}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563783197
 GameObject:
@@ -1560,9 +1527,9 @@ MonoBehaviour:
   tex: {fileID: 2800000, guid: 911c86a0ae4c16546802cfa3e35a7959, type: 3}
   ObjectToSpawn: {fileID: 3611290656094942886, guid: 9e8c05f1c4b08d240b64a51bdba60aa7,
     type: 3}
-  ArtWidth: 26
-  ArtHeight: 28
-  ArtpixelOffset: 3
+  ArtWidth: 10
+  ArtHeight: 10
+  ArtpixelOffset: 0
   scaleValue: 0
   CenterCube: {x: 0, y: 0, z: 0}
   CamOffset: {x: 0, y: 0, z: 0}

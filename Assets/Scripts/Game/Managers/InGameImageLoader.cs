@@ -14,7 +14,7 @@ public class InGameImageLoader : Manager<InGameImageLoader>
 
     public float MaxDifference = 0.15f;
     public int NumberOfCurrentPicture = 0;
-    private List<Color> NormalizedColors;
+    private List<Color> NormalizedColors = new List<Color>();
 
     public Color[,] CreatePicture(int NumberOfPicture)
     {

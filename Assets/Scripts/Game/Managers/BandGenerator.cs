@@ -19,7 +19,7 @@ public class BandGenerator : Manager<BandGenerator>
     private Pooler pooler;
     private GameManager gameManager;
     private ColorIndicator colorIndicator;
-    private InGameImageLoader imageLoader;
+    //private InGameImageLoader imageLoader;
 
     private void Awake()
     {
@@ -31,8 +31,8 @@ public class BandGenerator : Manager<BandGenerator>
     {
         pooler = Pooler.instance;
         gameManager = GameManager.Instance;
-        imageLoader = InGameImageLoader.Instance;
-        GetColorsFromImage();
+        //imageLoader = InGameImageLoader.Instance;
+        //GetColorsFromImage();
     }
 
     public IEnumerator StartGeneration(Color[] colors)
@@ -54,9 +54,9 @@ public class BandGenerator : Manager<BandGenerator>
         }
     }
 
-    private void GetColorsFromImage()
+    /*private void GetColorsFromImage()
     {
         imageLoader.CreatePicture(0);
         Colors = imageLoader.GetAllColors().ToArray();
-    }
+    }*/
 }

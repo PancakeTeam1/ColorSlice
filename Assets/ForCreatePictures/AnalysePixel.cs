@@ -32,7 +32,8 @@ public class AnalysePixel
             for (int j = 0; j < numberOfArtpixelsInColumn; j++)
             {
                 int[] coord = sectors[i, j].GetCenter();
-                colors[i, j] = allColors[coord[0], coord[1]];
+                Color color = allColors[coord[0], coord[1]];
+                colors[i, j] = color;
             }
         }
         return colors;

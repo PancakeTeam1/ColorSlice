@@ -37,6 +37,7 @@ public class BandGenerator : Manager<BandGenerator>
 
     public IEnumerator StartGeneration(Color[] colors)
     {
+        yield return new WaitForSeconds(3);
         this.colors = GridController.MakeSet<Color>(colors);
         while (true)
         {

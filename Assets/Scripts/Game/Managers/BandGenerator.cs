@@ -6,12 +6,12 @@ public class BandGenerator : Manager<BandGenerator>
 {
     public GameObject PrefabCube;
     public float Distance;
-    public Color[] Colors;
+    private Color[] colors;
 
     [HideInInspector]
-    public Vector3 startPoint;
+    public Transform startPoint;
     [HideInInspector]
-    public Vector3 endPoint;
+    public Transform endPoint;
     private Vector3 lastCubePos;
     private GameObject lastCube;
     private float currentDistance;
@@ -23,8 +23,8 @@ public class BandGenerator : Manager<BandGenerator>
 
     private void Awake()
     {
-        startPoint = transform.Find("StartPoint").position;
-        endPoint = transform.Find("EndPoint").position;
+        startPoint = transform.Find("StartPoint");
+        endPoint = transform.Find("EndPoint");
     }
 
     private void Start()
@@ -37,18 +37,20 @@ public class BandGenerator : Manager<BandGenerator>
 
     public IEnumerator StartGeneration(Color[] colors)
     {
+        this.colors = GridController.MakeSet<Color>(colors);
         while (true)
         {
             if (lastCube == null || currentDistance >= Distance)
             {
-                lastCube = pooler.SpawnFromPull(PrefabCube, startPoint, transform);
-                lastCube.GetComponent<Renderer>().materials[0].color = Colors[Random.Range(0, Colors.Length)];
+                lastCube = pooler.SpawnFromPull(PrefabCube, startPoint.position, transform);
+                lastCube.GetComponent<Renderer>().materials[0].color = colors[Random.Range(0, colors.Length)];
                 currentDistance = 0;
-                lastCubePos = startPoint;
+                lastCubePos = startPoint.localPosition;
             }
             else
             {
-                currentDistance += (lastCube.transform.position - lastCubePos).magnitude;
+                currentDistance += (lastCube.transform.localPosition - lastCubePos).magnitude;
+                lastCubePos = lastCube.transform.localPosition;
             }
             yield return null;
         }

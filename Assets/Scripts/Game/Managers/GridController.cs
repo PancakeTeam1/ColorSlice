@@ -71,9 +71,22 @@ public class GridController : Manager<GridController>
         colors = new Color[ArtWidth];
         for (int i = 0; i < ArtWidth; i++)
         {
-            colors[0] = CubesMaterial[row, i].color;
+            colors[i] = CubesMaterial[row, i].color;
         }
     }
+
+    public static T[] MakeSet<T>(T[] objects)
+    {
+        List<T> objs = new List<T>();
+        for(int i = 0; i < objects.Length; i++)
+        {
+            if (!objs.Contains(objects[i]))
+            {
+                objs.Add(objects[i]);
+            }
+        }
+        return objs.ToArray();
+    } 
 }
 
 

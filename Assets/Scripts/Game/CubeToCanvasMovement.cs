@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeMovement : MonoBehaviour
+public class CubeToCanvasMovement : MonoBehaviour
 {
     private bool ShouldMoveToPosition = false;
 

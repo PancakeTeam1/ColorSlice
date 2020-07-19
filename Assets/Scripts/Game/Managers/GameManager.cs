@@ -29,7 +29,5 @@ public class GameManager : Manager<GameManager>
         gridController.GetColorsInRow(CubeInCanvas.x, out colors);
         CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y].transform.position;
         StartCoroutine(bandGenerator.StartGeneration(colors));
-    }
-
-    
+    }   
 }

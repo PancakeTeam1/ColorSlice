@@ -12,6 +12,7 @@ public class BandGenerator : Manager<BandGenerator>
     public Transform startPoint;
     [HideInInspector]
     public Transform endPoint;
+    [HideInInspector] public bool isDeactivated = false;
     private Vector3 lastCubePos;
     private GameObject lastCube;
     private float currentDistance;
@@ -41,9 +42,12 @@ public class BandGenerator : Manager<BandGenerator>
         this.colors = GridController.MakeSet<Color>(colors);
         while (true)
         {
-            if (lastCube == null || currentDistance >= Distance)
+            if (lastCube == null || currentDistance >= Distance || isDeactivated == true)
             {
+                isDeactivated = false;
                 lastCube = pooler.SpawnFromPull(PrefabCube, startPoint.position, transform);
+                lastCube.GetComponent<CubeToCanvasMovement>().statement = false;
+                lastCube.GetComponent<CubeInBandMovement>().enabled = true;
                 lastCube.GetComponent<Renderer>().materials[0].color = colors[Random.Range(0, colors.Length)];
                 currentDistance = 0;
                 lastCubePos = startPoint.localPosition;

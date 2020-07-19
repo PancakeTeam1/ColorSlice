@@ -14,10 +14,6 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision!");
-        other.GetComponent<CubeInBandMovement>().enabled = false;
-        CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
-        cube.statement = true;
-        cube.place = gameManager.CurrentCube;
+        gameManager.CubeToCanvas(other);
     }
 }

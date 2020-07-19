@@ -15,7 +15,7 @@ public class GridController : Manager<GridController>
     public float ArtpixelOffset;
     [HideInInspector] public float scaleValue;
     [HideInInspector] public CubeInCanvas[,] Cubes;
-    private Material[,] CubesMaterial;
+    [HideInInspector] public Material[,] CubesMaterial;
     [HideInInspector] public Vector3 CenterCube;
     [HideInInspector] public Vector3 CamOffset;
     [HideInInspector] public float camXOffset;

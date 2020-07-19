@@ -30,4 +30,18 @@ public class GameManager : Manager<GameManager>
         CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y].transform.position;
         StartCoroutine(bandGenerator.StartGeneration(colors));
     }   
+
+    public void CubeToCanvas(Collider other)
+    {
+        Debug.Log("collision!");
+        other.GetComponent<CubeInBandMovement>().enabled = false;
+        CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
+        cube.statement = true;
+        cube.place = CurrentCube;
+    }
+
+    public void CanvasCubeActivation()
+    {
+        //set canvas cube alpha from ~0.2 to 1
+    }
 }

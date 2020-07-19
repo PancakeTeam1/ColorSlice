@@ -770,6 +770,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485757835}
   m_CullTransparentMesh: 0
+--- !u!1 &598385045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598385047}
+  - component: {fileID: 598385046}
+  m_Layer: 0
+  m_Name: InGameImageLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &598385046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598385045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409d3ebb1c12f534a9937b69135dbcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PixArts:
+  - name: Sonic
+    Texture: {fileID: 2800000, guid: 6496d81a132205c4da6995de33e4a0cb, type: 3}
+    RowSize: 23
+    ColumnSize: 28
+    OffsetX: 8
+    OffsetY: 7
+    PaddingX: 4
+    PaddingY: 4
+  MaxDifference: 0.15
+--- !u!4 &598385047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598385045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.7190948, y: 6.8301134, z: 26.692822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &693937038
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCube: {x: 0, y: 0, z: 0}
-  BandGeneratorObject: {fileID: 1401869863}
 --- !u!4 &693937041
 Transform:
   m_ObjectHideFlags: 0
@@ -1190,7 +1242,7 @@ MonoBehaviour:
   Speed: 1.5
   offsetZ: 0.5
   offsetX: 1
-  ViewSwitch: 0
+  ViewSwitch: 1
   LengthAreaX: 6
   defaultPos: {x: 0, y: 0, z: 0}
 --- !u!81 &917874771
@@ -1290,10 +1342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabCube: {fileID: 5456812439970720439, guid: f166e521a257665458d84961edd693b5,
     type: 3}
-  Distance: 30
-  Colors: []
-  startPoint: {x: 0, y: 0, z: 0}
-  endPoint: {x: 0, y: 0, z: 0}
+  Distance: 1.05
+  startPoint: {fileID: 0}
+  endPoint: {fileID: 0}
 --- !u!4 &1401869865
 Transform:
   m_ObjectHideFlags: 0
@@ -1466,7 +1517,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 768136f9d8c501d4eb0e3c30cd030185, type: 3}
+  - {fileID: -3033667219593020291, guid: 7a4194af5a23cc340b91d3b479402cab, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1494,7 +1545,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069661448}
-  m_Mesh: {fileID: -2432090755550338912, guid: 768136f9d8c501d4eb0e3c30cd030185, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 7a4194af5a23cc340b91d3b479402cab, type: 3}
 --- !u!1 &2140022953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,12 +1575,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d55e83fb89d5745a9e25a8aa26a31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tex: {fileID: 2800000, guid: 911c86a0ae4c16546802cfa3e35a7959, type: 3}
+  tex: {fileID: 2800000, guid: 6496d81a132205c4da6995de33e4a0cb, type: 3}
   ObjectToSpawn: {fileID: 3611290656094942886, guid: 9e8c05f1c4b08d240b64a51bdba60aa7,
     type: 3}
-  ArtWidth: 10
-  ArtHeight: 10
-  ArtpixelOffset: 0
+  ArtWidth: 23
+  ArtHeight: 28
+  ArtpixelOffset: 1.15
   scaleValue: 0
   CenterCube: {x: 0, y: 0, z: 0}
   CamOffset: {x: 0, y: 0, z: 0}

@@ -39,7 +39,5 @@ public class GameManager : Manager<GameManager>
         cam.ViewSwitch = false;
         gridController.GetColorsInRow(rowInCanvas, out colors);
         StartCoroutine(bandGenerator.StartGeneration(colors));
-    }
-
-    
+    }   
 }

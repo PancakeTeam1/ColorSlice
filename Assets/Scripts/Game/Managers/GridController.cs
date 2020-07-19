@@ -64,14 +64,14 @@ public class GridController : Manager<GridController>
         for (int i = 0; i < ArtWidth; i++)
             for (int j = 0; j < ArtHeight; j++)
             {
-                Cubes[i, j].gameObject.GetComponent<Renderer>().materials[0].color = colors[i, j];
+                Cubes[i, ArtHeight - j - 1].gameObject.GetComponent<Renderer>().materials[0].color = colors[i, j];
             }
     }
 
     public void GetColorsInRow(int row, out Color[] colors)
     {
-        colors = new Color[ArtWidth];
-        for (int i = 0; i < ArtWidth; i++)
+        colors = new Color[ArtHeight];
+        for (int i = 0; i < ArtHeight; i++)
         {
             colors[i] = CubesMaterial[row, i].color;
         }

@@ -14,19 +14,20 @@ public class GameManager : Manager<GameManager>
     private void Awake()
     {
         bandGenerator = BandGenerator.Instance;
+        gridController = GridController.Instance;
         cam = Camera.main.GetComponent<CameraController>();
     }
 
     private void Start()
     {
-        gridController = GridController.Instance;
         CurrentCube = gridController.Cubes[0, 0].transform.position;
     }
 
-    public void SetBandMode(int rowInCanvas)
+    public void SetBandMode(Vector2Int CubeInCanvas)
     {
         cam.ViewSwitch = false;
-        gridController.GetColorsInRow(rowInCanvas, out colors);
+        gridController.GetColorsInRow(CubeInCanvas.x, out colors);
+        CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y].transform.position;
         StartCoroutine(bandGenerator.StartGeneration(colors));
     }
 

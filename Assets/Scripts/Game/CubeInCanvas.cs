@@ -16,6 +16,6 @@ public class CubeInCanvas : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.SetBandMode(PosInCanvas.x);
+        gameManager.SetBandMode(PosInCanvas);
     }
 }

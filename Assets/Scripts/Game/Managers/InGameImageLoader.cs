@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class InGameImageLoader : Manager<InGameImageLoader>
 {
-    public List<Texture2D> Texture;
-    public List<int> RowSize;
-    public List<int> ColumnSize;
-    public List<int> OffsetX;
-    public List<int> OffsetY;
-    public List<int> PaddingX;
-    public List<int> PaddingY;
+    public Picture[] PixArts;
+    
+    [System.Serializable]
+    public struct Picture
+    {
+        public string name;
+        public Texture2D Texture;
+        public int RowSize;
+        public int ColumnSize;
+        public int OffsetX;
+        public int OffsetY;
+        public int PaddingX;
+        public int PaddingY;
+    }
 
     public float MaxDifference = 0.15f;
-    public int NumberOfCurrentPicture = 0;
     private List<Color> NormalizedColors = new List<Color>();
 
     public Color[,] CreatePicture(int NumberOfPicture)
     {
-        int CurrentRowSize = RowSize[NumberOfPicture];
-        int CurrentColumnSize = ColumnSize[NumberOfPicture];
+        Picture PixArt = PixArts[NumberOfPicture];
+        int CurrentRowSize = PixArt.RowSize;
+        int CurrentColumnSize = PixArt.ColumnSize;
         NormalizedColors.Clear();
         NormalizedColors = new List<Color>();
-        Color[,] NotNormalizedColors = AnalysePixel.Analyse(Texture[NumberOfPicture], CurrentRowSize, CurrentColumnSize, OffsetX[NumberOfPicture], OffsetY[NumberOfPicture], PaddingX[NumberOfPicture], PaddingY[NumberOfPicture]);
+        Color[,] NotNormalizedColors = AnalysePixel.Analyse(PixArt.Texture, CurrentRowSize, CurrentColumnSize, PixArt.OffsetX, PixArt.OffsetY, PixArt.PaddingX, PixArt.PaddingY);
 
         for(int row = 0; row < CurrentRowSize; row++)
         {

@@ -25,15 +25,17 @@ public class GridController : Manager<GridController>
 
     private CameraController cam;
     private GameManager gameManager;
+    private InGameImageLoader imageLoader;
 
     private void Awake()
     {
+        imageLoader = InGameImageLoader.Instance;
         gameManager = GameManager.Instance;
         Cubes = new CubeInCanvas[ArtWidth, ArtHeight];
         CubesMaterial = new Material[ArtWidth, ArtHeight];
         cam = Camera.main.GetComponent<CameraController>();
         SpawnGrid();
-        SetPicture();
+        SetPicture(0);
     }
 
     void SpawnGrid()
@@ -56,9 +58,9 @@ public class GridController : Manager<GridController>
         CenterCube = Vector3.Lerp(Cubes[ArtWidth - 1, ArtHeight - 1].transform.position, Cubes[0, 0].transform.position, 0.5f);
     }
 
-    private void SetPicture()
+    private void SetPicture(int NumberPicture)
     {
-        Color[,] colors = AnalysePixel.Analyse(tex, 23, 28, 8, 7, 4, 4);
+        Color[,] colors = imageLoader.CreatePicture(NumberPicture);
         for (int i = 0; i < ArtWidth; i++)
             for (int j = 0; j < ArtHeight; j++)
             {

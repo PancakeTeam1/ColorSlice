@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4937944719812670055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e17c828b570874a81e740e66818c4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7813b1e811832f24ca43d152e2cd6920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentCube: {x: 0, y: 0, z: 0}
@@ -55,10 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4937944719812670055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ee8ebdeff4de04f8d9b1fbb65da66a, type: 3}
+  m_Script: {fileID: 11500000, guid: 38e9f43693ec478468dc2729537aa490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 7092976736171870761, guid: e5d3be151a2671b448fb611c3c36788b,
+  PauseMenu: {fileID: 7092976736171870761, guid: 1c773bbef87d63843971cc9ff24b0657,
     type: 3}
   IsButton: 0
   IsPaused: 0

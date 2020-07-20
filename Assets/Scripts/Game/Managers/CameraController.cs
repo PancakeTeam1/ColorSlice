@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraController : Manager<CameraController>
 {
     public float Speed = 1.5f;
     public float offsetZ = 0.5f;

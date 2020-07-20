@@ -111,13 +111,23 @@ public class GameManager : Manager<GameManager>
         SetBandMode(CurrentCube.PosInCanvas);
     }
 
-    public void CubeToCanvas(Collider other)
+    public void CubeToCanvas(CubeInBandMovement other)
     {
-        Debug.Log("collision!");
-        other.GetComponent<CubeInBandMovement>().enabled = false;
+        Color colOther = other.mat.color;
+        Color colCur = CurrentCube.mat.color;
+        other.enabled = false;
         CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
-        cube.statement = true;
-        cube.place = CurrentCube.transform.position;
+        if (colOther.r == colCur.r && colOther.g == colCur.g && colOther.b == colCur.b)
+        {
+            cube.statement = true;
+            cube.place = CurrentCube;
+            SetNextCube();
+        }
+        else
+        {
+            cube.gameObject.SetActive(false);
+        }
+        
     }
 
     public void CanvasCubeActivation()

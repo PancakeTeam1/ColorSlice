@@ -465,6 +465,7 @@ MonoBehaviour:
   ArtWidth: 23
   ArtHeight: 28
   ArtpixelOffset: 1
+  transparency: 0.6
   scaleValue: 0
   CenterCube: {x: 0, y: 0, z: 0}
   CamOffset: {x: 0, y: 0, z: 0}
@@ -617,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e17c828b570874a81e740e66818c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCube: {x: 3, y: 0, z: 0}
+  CurrentCube: {fileID: 0}
   ModeCondition: 0
 --- !u!114 &1585946747
 MonoBehaviour:
@@ -847,6 +848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2625334911479312446, guid: 3a583841a960c344797becd90f69c927,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7458661134865645654, guid: 3a583841a960c344797becd90f69c927,
         type: 3}

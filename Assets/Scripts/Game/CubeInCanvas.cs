@@ -6,8 +6,10 @@ public class CubeInCanvas : MonoBehaviour
 {
     //Это не координата в пространстве, а координата в холсте
     [HideInInspector]public Vector2Int PosInCanvas;
-    private Material mat;
+    [HideInInspector]
+    public Material mat;
     private GameManager gameManager;
+    [HideInInspector]
     public bool isFree = false;
 
 
@@ -21,7 +23,6 @@ public class CubeInCanvas : MonoBehaviour
     {
         mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1f);
         isFree = true;
-        gameManager.SetNextCube();
     }
 
     private void OnMouseDown()

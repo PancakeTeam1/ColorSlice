@@ -14,6 +14,5 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.CubeToCanvas(other);
     }
 }

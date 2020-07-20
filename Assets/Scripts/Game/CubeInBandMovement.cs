@@ -7,9 +7,18 @@ public class CubeInBandMovement : MonoBehaviour
     public float speed = 15f;
     private BandGenerator generator;
     private CubeToCanvasMovement movement;
+    [HideInInspector]
+    public Material mat;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        mat = GetComponent<Renderer>().materials[0];
+    }
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         generator = transform.parent.GetComponent<BandGenerator>();
     }
 
@@ -23,12 +32,11 @@ public class CubeInBandMovement : MonoBehaviour
         }
     }
 
-    public void OnHitbuttonClick()
+    private void OnTriggerEnter(Collider other)
     {
-        if(this.transform.position.x >= Camera.main.transform.position.x-0.5f && this.transform.position.x <= Camera.main.transform.position.x + 0.5f)
+        if (other.tag == "Axe")
         {
-            movement.statement = true;
-            movement.place = Camera.main.transform.position;
+            gameManager.CubeToCanvas(this);
         }
     }
 }

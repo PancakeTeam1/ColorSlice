@@ -50,7 +50,7 @@ public class GridController : Manager<GridController>
                 Vector3 spawnPosition = new Vector3(x * ArtpixelOffset, 0, z * ArtpixelOffset) + GridOrigin;
                 Cubes[x, z] = Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity).GetComponent<CubeInCanvas>();
                 Cubes[x, z].PosInCanvas = new Vector2Int(x, z);
-                CubesMaterial[x, z] = Cubes[x, z].GetComponent<Renderer>().materials[0];
+                CubesMaterial[x, z] = Cubes[x, z].mat;
             }
         }
         camXOffset = ArtWidth / 2 - 0.5f + (ArtWidth - 1) * (ArtpixelOffset - 1) / 2 + GridOrigin.x;

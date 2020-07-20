@@ -8,8 +8,10 @@ public class CubeToCanvasMovement : MonoBehaviour
     private bool ShouldMoveToPosition = false;
 
     public float Speed = 5f;
+    [HideInInspector]
     public bool statement;  // when should we move our cube to place
-    public Vector3 place;  // place, where should we move our cube
+    [HideInInspector]
+    public CubeInCanvas place;  // place, where should we move our cube
 
     private GameManager gameManager;
     private BandGenerator bandGenerator;
@@ -29,14 +31,14 @@ public class CubeToCanvasMovement : MonoBehaviour
 
         if (ShouldMoveToPosition)
         {
-            transform.Translate((place - this.transform.position).normalized * Speed * Time.deltaTime);
+            transform.Translate((place.transform.position - this.transform.position).normalized * Speed * Time.deltaTime);
         }
 
-        if (Vector3.Distance(this.transform.position, place) < 0.05f && ShouldMoveToPosition)
+        if (ShouldMoveToPosition && Vector3.Distance(this.transform.position, place.transform.position) < 0.05f)
         {
             ShouldMoveToPosition = false;
             this.gameObject.SetActive(false);
-            gameManager.CurrentCube.PutCubeBand();
+            place.PutCubeBand();
             //bandGenerator.isDeactivated = true;
         }
     }

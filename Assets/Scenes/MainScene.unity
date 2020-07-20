@@ -242,16 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fa95cc866d8a34cac9955b196085e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PixArts:
-  - name: 
-    Texture: {fileID: 2800000, guid: 5258ee24e0e5dd44097442265fe910fd, type: 3}
-    RowSize: 23
-    ColumnSize: 28
-    OffsetX: 8
-    OffsetY: 7
-    PaddingX: 4
-    PaddingY: 4
-  MaxDifference: 0.15
 --- !u!4 &474168434
 Transform:
   m_ObjectHideFlags: 0
@@ -311,11 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447b9faefebe6894a8c85dca55774dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabCube: {fileID: 5456812439970720439, guid: 4cf63624aaf5bf84fb4bd5389a30cefb,
-    type: 3}
-  Distance: 2
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
 --- !u!1 &1202971349
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,12 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efc0c5be9f799a498d0c2d0083770a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1.5
-  offsetZ: 0.5
-  offsetX: 1
-  ViewSwitch: 1
-  LengthAreaX: 6
-  defaultPos: {x: 0, y: 0, z: 0}
 --- !u!81 &1202971351
 AudioListener:
   m_ObjectHideFlags: 0
@@ -450,9 +429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337e73f3528c2934b9cee5c8e2524173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 850906129341675552}
-  IsButton: 0
-  IsPaused: 0
 --- !u!114 &1243191400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,7 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea4d8283c72631468c64264c0de1395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCube: {x: 0, y: 0, z: 0}
 --- !u!4 &1243191401
 Transform:
   m_ObjectHideFlags: 0
@@ -509,11 +484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b7b78466f81ae44b00d24a67934489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
-  - name: 
-    prefab: {fileID: 5456812439970720439, guid: 4cf63624aaf5bf84fb4bd5389a30cefb,
-      type: 3}
-    size: 30
 --- !u!4 &1571049401
 Transform:
   m_ObjectHideFlags: 0
@@ -617,19 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ab511999a924f44b2d604f7e77edfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tex: {fileID: 2800000, guid: 5258ee24e0e5dd44097442265fe910fd, type: 3}
-  ObjectToSpawn: {fileID: 3611290656094942886, guid: 9e8c05f1c4b08d240b64a51bdba60aa7,
-    type: 3}
-  ArtWidth: 23
-  ArtHeight: 28
-  ArtpixelOffset: 1.1
-  scaleValue: 0
-  CenterCube: {x: 0, y: 0, z: 0}
-  CamOffset: {x: 0, y: 0, z: 0}
-  camXOffset: 0
-  camYOffset: 0
-  camZOffset: 0
-  GridOrigin: {x: 0, y: 0, z: 0}
 --- !u!4 &2110835378
 Transform:
   m_ObjectHideFlags: 0
@@ -2033,7 +1990,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6271378555729727596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4edf0b985ecab147819d17bde78ed30, type: 3}
+  m_Script: {fileID: 11500000, guid: 463e22f6c65a7674ab74f64459cf62f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &6271378555729727598

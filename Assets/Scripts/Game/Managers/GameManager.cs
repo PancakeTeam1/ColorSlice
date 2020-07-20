@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
-    public Vector3 CurrentCube;
+    public CubeInCanvas CurrentCube;
     private GridController gridController;
     private CameraController cam;
     private BandGenerator bandGenerator;
     private Color[] colors;
-    private CubeInCanvas pressedCube;
     [HideInInspector]
     public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
@@ -41,7 +40,6 @@ public class GameManager : Manager<GameManager>
     private void Start()
     {
         ModeCondition = Mode.Canvas;
-        CurrentCube = gridController.Cubes[0, 0].transform.position;
     }
 
     public void SetBandMode(Vector2Int CubeInCanvas)
@@ -51,14 +49,24 @@ public class GameManager : Manager<GameManager>
             ModeCondition = Mode.Band;
             cam.ViewSwitch = false;
             gridController.GetColorsInRow(CubeInCanvas.y, out colors);
-            CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y].transform.position;
+            CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y];
             StartCoroutine(bandGenerator.StartGeneration(colors));
         }
     }
     
+    public void SetNextCube()
+    {
+        if (frameCondition == Frame.Horizontal)
+        {
+            Vector2Int posCube = CurrentCube.PosInCanvas;
+            if (posCube.x != gridController.ArtWidth - 1)
+                CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
+        }
+    }
+
     public void PressCube(CubeInCanvas pressed)
     {
-        if (pressed == pressedCube)
+        if (CurrentCube == pressed)
         {
             if (frameCondition != Frame.Vertical)
                 frameCondition = (Frame)((int)frameCondition + 1);
@@ -68,7 +76,7 @@ public class GameManager : Manager<GameManager>
         }
         else
         {
-            pressedCube = pressed;
+            CurrentCube = pressed;
             frameCondition = Frame.Horizontal;
         }
         frame.SetFrame(frameCondition, pressed.PosInCanvas);
@@ -76,7 +84,7 @@ public class GameManager : Manager<GameManager>
 
     public void OnClickStart()
     {
-            SetBandMode(pressedCube.PosInCanvas);
+            SetBandMode(CurrentCube.PosInCanvas);
     }
 
     public void CubeToCanvas(Collider other)
@@ -85,7 +93,7 @@ public class GameManager : Manager<GameManager>
         other.GetComponent<CubeInBandMovement>().enabled = false;
         CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
         cube.statement = true;
-        cube.place = CurrentCube;
+        cube.place = CurrentCube.transform.position;
     }
 
     public void CanvasCubeActivation()

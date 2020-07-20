@@ -32,7 +32,7 @@ public class CameraController : MonoBehaviour
     }
     public void WatchOnArtpixel()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(Mathf.Lerp(gameManager.CurrentCube.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), distanceToCanvas, gameManager.CurrentCube.z + offsetZ), Time.deltaTime * Speed);
+        this.transform.position = Vector3.Lerp(this.transform.position, new Vector3(Mathf.Lerp(gameManager.CurrentCube.transform.position.x, gridController.CenterCube.x, 2 * offsetX / gridController.ArtWidth), distanceToCanvas, gameManager.CurrentCube.transform.position.z + offsetZ), Time.deltaTime * Speed);
     }
     public void WatchOnArt()
     {

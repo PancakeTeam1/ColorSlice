@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +12,8 @@ public class GridController : Manager<GridController>
     public int ArtWidth;
     public int ArtHeight;
     public float ArtpixelOffset;
+    // Прозрачность
+    public float transparency;
     [HideInInspector] public float scaleValue;
     [HideInInspector] public CubeInCanvas[,] Cubes;
     [HideInInspector] public Material[,] CubesMaterial;
@@ -64,16 +65,16 @@ public class GridController : Manager<GridController>
         for (int i = 0; i < ArtWidth; i++)
             for (int j = 0; j < ArtHeight; j++)
             {
-                Cubes[i, ArtHeight - j - 1].gameObject.GetComponent<Renderer>().materials[0].color = colors[i, j];
+                Cubes[i, ArtHeight - j - 1].gameObject.GetComponent<Renderer>().materials[0].color = new Color(colors[i, j].r, colors[i, j].g, colors[i, j].b, transparency);
             }
     }
 
     public void GetColorsInRow(int row, out Color[] colors)
     {
-        colors = new Color[ArtHeight];
-        for (int i = 0; i < ArtHeight; i++)
+        colors = new Color[ArtWidth];
+        for (int i = 0; i < ArtWidth; i++)
         {
-            colors[i] = CubesMaterial[row, i].color;
+            colors[i] = CubesMaterial[i, row].color;
         }
     }
 

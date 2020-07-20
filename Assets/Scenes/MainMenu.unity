@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 14ba51ad9d1c42a468daefdfad47bba8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 638e013fb5fbc624e87f95259cc47fb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 183313512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e300c57c3a82ebd4aa3b53bde6c32b25, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fd02c4488c087c4fa1bd99b8c7a514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CollectionSceneName: Collection
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19d378904a3ec924aa450515592b2bf9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2727b3c20cc086a4d95f8f4ff39f926d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -604,10 +604,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 265173372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6bfc397661ad243aef91fa754b2aff, type: 3}
+  m_Script: {fileID: 11500000, guid: 30d8c66b81aa2514d82080e1ba1ff622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameSceneName: DoNotTouch
+  GameSceneName: ForMarat
 --- !u!1 &286485296
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2d19d588c5c677c458632595d801fc2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8dbeb0a145f6854408e712a656a770cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -747,11 +747,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 286485296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb0e568a69f33fc4e88b7a3e14ddd303, type: 3}
+  m_Script: {fileID: 11500000, guid: 572d14989dfa6bd47813a83235c3483f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VibrationOnImage: {fileID: 21300000, guid: 2d19d588c5c677c458632595d801fc2c, type: 3}
-  VibrationOffImage: {fileID: 21300000, guid: 0148fe04eeacea649bbb4117409f3af1, type: 3}
+  VibrationOnImage: {fileID: 21300000, guid: 8dbeb0a145f6854408e712a656a770cf, type: 3}
+  VibrationOffImage: {fileID: 21300000, guid: 53ecd6ecab9e66747967eebbc40d8e8c, type: 3}
   Vibration: 1
 --- !u!1 &313555152
 GameObject:
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4a32fe83663125e4495e76b1cd831587, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f819903d7fdc50b4a82a3ff3ef1e12e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 416194269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddebb4b10ab77fe44915dc9e59c60483, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dfbec7b270a07a4f8c916f530328bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LockMusicButton: {fileID: 2059952761}
@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5bd9e3b657605dc449154bd7386c152e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e42f5a55d76e0744199b35a8bbbab00a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0f405fd2857e7de4c8aaddc8036dd29e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f185efa7e868bd74f9a1dc10913c1ff1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1598,7 +1598,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780844690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c0b00d3069082240b76f988992d0c1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 379f837cdd40409428612e24dcc1d368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkinsSceneName: SkinsShop
@@ -1780,7 +1780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c111d7210940da44db84da21d6e5d473, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf64fe9e10a38b446b2d7ed4beae9ead, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1807,9 +1807,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059952761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43a4438a0584b04a8ffc7f52d4277f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c798980a2c3e35429a85777a2138fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicOnImage: {fileID: 21300000, guid: c111d7210940da44db84da21d6e5d473, type: 3}
-  MusicOffImage: {fileID: 21300000, guid: 854b1f37c795049419d427de8ac24ec6, type: 3}
+  MusicOnImage: {fileID: 21300000, guid: bf64fe9e10a38b446b2d7ed4beae9ead, type: 3}
+  MusicOffImage: {fileID: 21300000, guid: 472fbf5c880f616498cae4197589283f, type: 3}
   Sound: 1

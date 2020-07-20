@@ -40,6 +40,7 @@ public class BandGenerator : Manager<BandGenerator>
     {
         yield return new WaitForSeconds(1);
         this.colors = GridController.MakeSet<Color>(colors);
+        colors = this.colors;
         while (true)
         {
             if (lastCube == null || currentDistance >= Distance)

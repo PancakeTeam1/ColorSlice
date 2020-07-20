@@ -36,6 +36,7 @@ public class CubeToCanvasMovement : MonoBehaviour
             Debug.Log("should move");
             ShouldMoveToPosition = false;
             this.gameObject.SetActive(false);
+            gameManager.CurrentCube.PutCubeBand();
             //bandGenerator.isDeactivated = true;
         }
     }

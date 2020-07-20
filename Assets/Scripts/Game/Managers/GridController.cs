@@ -12,6 +12,8 @@ public class GridController : Manager<GridController>
     public int ArtWidth;
     public int ArtHeight;
     public float ArtpixelOffset;
+    public int SquareOfArt;
+
     // Прозрачность
     public float transparency;
     [HideInInspector] public float scaleValue;
@@ -67,6 +69,8 @@ public class GridController : Manager<GridController>
             {
                 Cubes[i, ArtHeight - j - 1].gameObject.GetComponent<Renderer>().materials[0].color = new Color(colors[i, j].r, colors[i, j].g, colors[i, j].b, transparency);
             }
+        SquareOfArt = ArtHeight * ArtWidth;
+        gameManager.CubesPainted = 0;
     }
 
     public void GetColorsInRow(int row, out Color[] colors)

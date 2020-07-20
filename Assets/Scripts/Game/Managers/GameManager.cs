@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : Manager<GameManager>
 {
     public CubeInCanvas CurrentCube;
+    public int CubesPainted;
+
     private GridController gridController;
     private CameraController cam;
     private BandGenerator bandGenerator;
@@ -56,11 +58,33 @@ public class GameManager : Manager<GameManager>
     
     public void SetNextCube()
     {
+        CubesPainted += 1;
         if (frameCondition == Frame.Horizontal)
         {
             Vector2Int posCube = CurrentCube.PosInCanvas;
+
             if (posCube.x != gridController.ArtWidth - 1)
+            {
                 CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
+            }
+            else  // if the row ends
+            {
+                if(posCube.y == 0 && posCube.x == gridController.ArtWidth - 1)  // if it was right bottom cube
+                {
+                    if(CubesPainted == gridController.SquareOfArt)  // if the art if completly painted over 
+                    {
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                    }
+                    else
+                    {
+                        CurrentCube = gridController.Cubes[0, gridController.ArtHeight - 1];  // Set CurrebtCube to start position
+                    }
+                }
+                else
+                {
+                    CurrentCube = gridController.Cubes[0, posCube.y - 1];  // set CurrentCube to the next row
+                }
+            }
         }
     }
 
@@ -84,7 +108,7 @@ public class GameManager : Manager<GameManager>
 
     public void OnClickStart()
     {
-            SetBandMode(CurrentCube.PosInCanvas);
+        SetBandMode(CurrentCube.PosInCanvas);
     }
 
     public void CubeToCanvas(Collider other)

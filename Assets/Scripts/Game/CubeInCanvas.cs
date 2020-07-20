@@ -6,7 +6,6 @@ public class CubeInCanvas : MonoBehaviour
 {
     //Это не координата в пространстве, а координата в холсте
     [HideInInspector]public Vector2Int PosInCanvas;
-
     private GameManager gameManager;
 
     private void Awake()
@@ -16,6 +15,8 @@ public class CubeInCanvas : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.SetBandMode(PosInCanvas);
+        if (gameManager.ModeCondition == GameManager.Mode.Canvas)
+            gameManager.PressCube(this);
+
     }
 }

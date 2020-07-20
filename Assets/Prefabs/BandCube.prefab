@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 5456812439970720458}
   - component: {fileID: 5456812439970720457}
   - component: {fileID: 436849163177102939}
-  - component: {fileID: 3319254322145456319}
-  - component: {fileID: 4245346913498951190}
+  - component: {fileID: 5812608381683013768}
+  - component: {fileID: 6957305397428427022}
+  - component: {fileID: -3705543750585628474}
   m_Layer: 0
   m_Name: BandCube
   m_TagString: Untagged
@@ -92,11 +93,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e301e2472d2d166429178c95292e334e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c5f1d9c73bebb742a9d4cef96c3175f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
---- !u!65 &3319254322145456319
+  speed: 1
+--- !u!114 &5812608381683013768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456812439970720439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1a294c3e2d7ea46a338a9ec922fb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  statement: 0
+  place: {x: 0, y: 0, z: 0}
+--- !u!65 &6957305397428427022
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4245346913498951190
+--- !u!54 &-3705543750585628474
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

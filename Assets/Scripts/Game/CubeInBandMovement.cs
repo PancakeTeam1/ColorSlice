@@ -22,4 +22,13 @@ public class CubeInBandMovement : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void OnHitbuttonClick()
+    {
+        if(this.transform.position.x >= Camera.main.transform.position.x-0.5f && this.transform.position.x <= Camera.main.transform.position.x + 0.5f)
+        {
+            movement.statement = true;
+            movement.place = Camera.main.transform.position;
+        }
+    }
 }

@@ -7,6 +7,7 @@ public class GameManager : Manager<GameManager>
 {
     [HideInInspector] public CubeInCanvas CurrentCube;
     [HideInInspector] public int CubesPainted;
+    [HideInInspector] public bool IsHitbutton = false;
     public float MissDelay = 1f;
     public GameObject HitButton;
 
@@ -87,6 +88,12 @@ public class GameManager : Manager<GameManager>
                 }
             }
         }
+        else
+        {
+            Vector2Int posCube = CurrentCube.PosInCanvas;
+            if (posCube.y != gridController.ArtHeight - 1)
+                CurrentCube = gridController.Cubes[posCube.x, posCube.y + 1];
+        }
     }
 
     public void PressCube(CubeInCanvas pressed)
@@ -114,20 +121,24 @@ public class GameManager : Manager<GameManager>
 
     public void CubeToCanvas(CubeInBandMovement other)
     {
-        Color colOther = other.mat.color;
-        Color colCur = CurrentCube.mat.color;
-        other.enabled = false;
-        CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
-        if (colOther.r == colCur.r && colOther.g == colCur.g && colOther.b == colCur.b)
+        if (IsHitbutton)
         {
-            cube.statement = true;
-            cube.place = CurrentCube;
-            SetNextCube();
-        }
-        else
-        {
-            StartCoroutine(MissCoolDown());
-            cube.gameObject.SetActive(false);
+            Color colOther = other.mat.color;
+            Color colCur = CurrentCube.mat.color;
+            other.enabled = false;
+            CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
+            if (colOther.r == colCur.r && colOther.g == colCur.g && colOther.b == colCur.b)
+            {
+                cube.statement = true;
+                cube.place = CurrentCube;
+                SetNextCube();
+            }
+            else
+            {
+                StartCoroutine(MissCoolDown());
+                cube.gameObject.SetActive(false);
+            }
+            IsHitbutton = false;
         }
     }
 

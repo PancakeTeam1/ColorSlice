@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: c4d4636ae7c1406459a101b9c99d061a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/ForMarat.unity
     guid: 8fb2e0e623e35944d96e63c03f733afe

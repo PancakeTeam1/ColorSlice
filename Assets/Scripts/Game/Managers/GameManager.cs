@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
-    public CubeInCanvas CurrentCube;
-    public int CubesPainted;
+    [HideInInspector] public CubeInCanvas CurrentCube;
+    [HideInInspector] public int CubesPainted;
 
     private GridController gridController;
     private CameraController cam;

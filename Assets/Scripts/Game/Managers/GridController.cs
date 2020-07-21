@@ -12,7 +12,8 @@ public class GridController : Manager<GridController>
     public int ArtWidth;
     public int ArtHeight;
     public float ArtpixelOffset;
-    public int SquareOfArt;
+    
+    [HideInInspector] public int SquareOfArt;  // Площадь арта
 
     // Прозрачность
     public float transparency;
@@ -24,7 +25,6 @@ public class GridController : Manager<GridController>
     [HideInInspector] public float camXOffset;
     [HideInInspector] public float camYOffset;
     [HideInInspector] public float camZOffset;
-    public Vector3 GridOrigin = new Vector3(0, 0, 0);
 
     private CameraController cam;
     private GameManager gameManager;
@@ -47,15 +47,15 @@ public class GridController : Manager<GridController>
         {
             for (int z = 0; z < ArtHeight; z++)
             {
-                Vector3 spawnPosition = new Vector3(x * ArtpixelOffset, 0, z * ArtpixelOffset) + GridOrigin;
+                Vector3 spawnPosition = new Vector3(x * ArtpixelOffset, 0, z * ArtpixelOffset);
                 Cubes[x, z] = Instantiate(ObjectToSpawn, spawnPosition, Quaternion.identity).GetComponent<CubeInCanvas>();
                 Cubes[x, z].PosInCanvas = new Vector2Int(x, z);
                 CubesMaterial[x, z] = Cubes[x, z].mat;
             }
         }
-        camXOffset = ArtWidth / 2 - 0.5f + (ArtWidth - 1) * (ArtpixelOffset - 1) / 2 + GridOrigin.x;
-        camYOffset = ArtWidth / 0.5f + GridOrigin.y;
-        camZOffset = (ArtHeight / 2 + GridOrigin.z) * 0.5f;
+        camXOffset = ArtWidth / 2 - 0.5f + (ArtWidth - 1) * (ArtpixelOffset - 1) / 2;
+        camYOffset = ArtWidth / 0.5f;
+        camZOffset = (ArtHeight / 2) * 0.5f;
         CamOffset = new Vector3(camXOffset, camYOffset, camZOffset);
         cam.defaultPos = CamOffset;
         CenterCube = Vector3.Lerp(Cubes[ArtWidth - 1, ArtHeight - 1].transform.position, Cubes[0, 0].transform.position, 0.5f);

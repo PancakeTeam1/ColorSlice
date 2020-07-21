@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameUIManager : Manager<GameUIManager>
 {
     public GameObject PauseMenu;
-    public bool IsButton = false;
-    public bool IsPaused = false;
+    [HideInInspector] public bool IsButton = false;
+    [HideInInspector] public bool IsPaused = false;
 
     void Update()
     {

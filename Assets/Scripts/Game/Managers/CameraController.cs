@@ -8,12 +8,12 @@ public class CameraController : Manager<CameraController>
     public float offsetZ = 0.5f;
     public float offsetX = 1;
     public bool ViewSwitch = true;
-    public int LengthAreaX = 6;
+    [HideInInspector] public int LengthAreaX = 6;
     private float averageY;
     private float distanceToCanvas;
     private GameManager gameManager;
     private GridController gridController;
-    public Vector3 defaultPos;
+    [HideInInspector] public Vector3 defaultPos;
 
     private void Start()
     {

@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 458640824}
   m_Layer: 0
   m_Name: SmallHammer
-  m_TagString: Untagged
+  m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2349,14 +2349,13 @@ MonoBehaviour:
   ArtHeight: 28
   ArtpixelOffset: 1.07
   SquareOfArt: 0
-  transparency: 0.29
+  transparency: 0.25
   scaleValue: 0
   CenterCube: {x: 0, y: 0, z: 0}
   CamOffset: {x: 0, y: 0, z: 0}
   camXOffset: 0
   camYOffset: 0
   camZOffset: 0
-  GridOrigin: {x: 0, y: 0, z: 0}
 --- !u!4 &2140022955
 Transform:
   m_ObjectHideFlags: 0

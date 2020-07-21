@@ -147,11 +147,6 @@ public class GameManager : Manager<GameManager>
         }
     }
 
-    public void CanvasCubeActivation()
-    {
-        //set canvas cube alpha from ~0.2 to 1
-    }
-
     private IEnumerator MissCoolDown()
     {
         HitButton.SetActive(false);

@@ -14,6 +14,7 @@ public class GameManager : Manager<GameManager>
     private GridController gridController;
     private CameraController cam;
     private BandGenerator bandGenerator;
+    private CoinsManager coinsManager;
     private Color[] colors;
     [HideInInspector] public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
@@ -35,6 +36,7 @@ public class GameManager : Manager<GameManager>
 
     private void Awake()
     {
+        coinsManager = CoinsManager.Instance;
         frame = FrameController.Instance;
         bandGenerator = BandGenerator.Instance;
         gridController = GridController.Instance;

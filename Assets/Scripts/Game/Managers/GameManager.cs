@@ -133,10 +133,13 @@ public class GameManager : Manager<GameManager>
             {
                 cube.statement = true;
                 cube.place = CurrentCube;
+                coinsManager.AddCoins(5);
+                coinsManager.AddCubeToStreak();
                 SetNextCube();
             }
             else
             {
+                coinsManager.ClearStreak();
                 StartCoroutine(MissCoolDown());
                 cube.gameObject.SetActive(false);
             }

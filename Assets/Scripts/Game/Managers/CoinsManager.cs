@@ -9,6 +9,7 @@ public class CoinsManager : Manager<CoinsManager>
     private int cubeStreak = 0;
     private int streakBonus = 1;
     public TextMeshProUGUI CoinsText;
+    public int CubesToIncreaseBonusByOne = 2;
 
     private void Start()
     {
@@ -18,8 +19,7 @@ public class CoinsManager : Manager<CoinsManager>
 
     public void AddCoins(int CoinsToAdd)
     {
-    
-        CoinsAmount += CoinsToAdd;
+        CoinsAmount += CoinsToAdd * streakBonus;
         PlayerPrefs.SetInt("CoinsAmount", CoinsAmount);
         CoinsText.text = CoinsAmount.ToString();
     }
@@ -27,7 +27,7 @@ public class CoinsManager : Manager<CoinsManager>
     public void AddCubeToStreak()
     {
         cubeStreak += 1;
-        streakBonus = 1 + cubeStreak / 5;
+        streakBonus = 1 + cubeStreak / CubesToIncreaseBonusByOne;
     }
 
     public void ClearStreak()

@@ -7,13 +7,14 @@ public class GameManager : Manager<GameManager>
 {
     [HideInInspector] public CubeInCanvas CurrentCube;
     [HideInInspector] public int CubesPainted;
+    public float MissDelay = 1f;
+    public GameObject HitButton;
 
     private GridController gridController;
     private CameraController cam;
     private BandGenerator bandGenerator;
     private Color[] colors;
-    [HideInInspector]
-    public Mode ModeCondition;
+    [HideInInspector] public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
     private Frame frameCondition = Frame.None;
     private FrameController frame;
@@ -125,13 +126,20 @@ public class GameManager : Manager<GameManager>
         }
         else
         {
+            StartCoroutine(MissCoolDown());
             cube.gameObject.SetActive(false);
         }
-        
     }
 
     public void CanvasCubeActivation()
     {
         //set canvas cube alpha from ~0.2 to 1
+    }
+
+    private IEnumerator MissCoolDown()
+    {
+        HitButton.SetActive(false);
+        yield return new WaitForSeconds(MissDelay);
+        HitButton.SetActive(true);
     }
 }

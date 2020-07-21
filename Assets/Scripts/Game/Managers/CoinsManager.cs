@@ -10,6 +10,7 @@ public class CoinsManager : Manager<CoinsManager>
     private int streakBonus = 1;
     public TextMeshProUGUI CoinsText;
     public int CubesToIncreaseBonusByOne = 2;
+    public GameObject[] Effects;
 
     private void Start()
     {
@@ -28,11 +29,28 @@ public class CoinsManager : Manager<CoinsManager>
     {
         cubeStreak += 1;
         streakBonus = 1 + cubeStreak / CubesToIncreaseBonusByOne;
+        if(streakBonus > 1)
+        {
+            ShowEffect();
+        }
     }
 
     public void ClearStreak()
     {
         cubeStreak = 0;
         streakBonus = 1;
+    }
+
+    public void ShowEffect()
+    {
+        int effectIndex = Random.Range(0, Effects.Length);
+        StartCoroutine(EffectCoroutine(effectIndex));
+    }
+
+    private IEnumerator EffectCoroutine(int effectIndex)
+    {
+        Effects[effectIndex].SetActive(true);
+        yield return new WaitForSeconds(1);
+        Effects[effectIndex].SetActive(false);
     }
 }

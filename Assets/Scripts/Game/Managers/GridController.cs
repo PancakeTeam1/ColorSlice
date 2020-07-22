@@ -7,15 +7,16 @@ using UnityEngine.UI;
 
 public class GridController : Manager<GridController>
 {
+    public InGameImageLoader.Picture picture;
     public Texture2D tex;
     public GameObject ObjectToSpawn;
     public int ArtWidth;
     public int ArtHeight;
     public float ArtpixelOffset;
+    public float bright = 0.2f;
     
-    [HideInInspector] public int SquareOfArt;  // Площадь арта
-
-    // Прозрачность
+    [HideInInspector] public int SquareOfArt;
+    
     public float transparency;
     [HideInInspector] public float scaleValue;
     [HideInInspector] public CubeInCanvas[,] Cubes;
@@ -25,24 +26,32 @@ public class GridController : Manager<GridController>
     [HideInInspector] public float camXOffset;
     [HideInInspector] public float camYOffset;
     [HideInInspector] public float camZOffset;
+    public Color[] AllColorsInCanvas;
 
     private CameraController cam;
     private GameManager gameManager;
     private InGameImageLoader imageLoader;
 
+    private CubeInCanvas[] coloredCubes;
+
     private void Awake()
     {
+        coloredCubes = new CubeInCanvas[0];
         imageLoader = InGameImageLoader.Instance;
         gameManager = GameManager.Instance;
         Cubes = new CubeInCanvas[ArtWidth, ArtHeight];
         CubesMaterial = new Material[ArtWidth, ArtHeight];
         cam = Camera.main.GetComponent<CameraController>();
+        picture = LevelManager.Instance.currentPicture;
         SpawnGrid();
         SetPicture(0);
     }
 
     void SpawnGrid()
     {
+        tex = picture.Texture;
+        ArtWidth = picture.RowSize;
+        ArtHeight = picture.ColumnSize;
         for (int x = 0; x < ArtWidth; x++)
         {
             for (int z = 0; z < ArtHeight; z++)
@@ -59,6 +68,33 @@ public class GridController : Manager<GridController>
         CamOffset = new Vector3(camXOffset, camYOffset, camZOffset);
         cam.defaultPos = CamOffset;
         CenterCube = Vector3.Lerp(Cubes[ArtWidth - 1, ArtHeight - 1].transform.position, Cubes[0, 0].transform.position, 0.5f);
+
+    }
+
+    public void SetFrame(GameManager.Frame frame, Vector2Int PosInCanvas)
+    {
+        for (int i = 0; i < coloredCubes.Length; i++)
+        {
+            coloredCubes[i].DeleteFromFrame();
+        }
+        if (frame == GameManager.Frame.Horizontal)
+        {
+            coloredCubes = new CubeInCanvas[ArtWidth];
+            for (int i = 0; i < coloredCubes.Length; i++)
+            {
+                coloredCubes[i] = Cubes[i, PosInCanvas.y];
+                coloredCubes[i].SetInFrame();
+            }
+        }
+        else
+        {
+            coloredCubes = new CubeInCanvas[ArtHeight];
+            for (int i = 0; i < coloredCubes.Length; i++)
+            {
+                coloredCubes[i] = Cubes[PosInCanvas.x, i];
+                coloredCubes[i].SetInFrame();
+            }
+        }
     }
 
     private void SetPicture(int NumberPicture)
@@ -67,7 +103,7 @@ public class GridController : Manager<GridController>
         for (int i = 0; i < ArtWidth; i++)
             for (int j = 0; j < ArtHeight; j++)
             {
-                Cubes[i, ArtHeight - j - 1].gameObject.GetComponent<Renderer>().materials[0].color = new Color(colors[i, j].r, colors[i, j].g, colors[i, j].b, transparency);
+                Cubes[ArtWidth - i - 1, ArtHeight - j - 1].SetColor(colors[i, j]);
             }
         SquareOfArt = ArtHeight * ArtWidth;
         gameManager.CubesPainted = 0;

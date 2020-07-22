@@ -6,8 +6,8 @@ public class FrameController : Manager<FrameController>
 {
     private GridController gridController;
     private LineRenderer line;
-    [HideInInspector] public float height = 0.6f;
-    [HideInInspector] public float lengthSide = 0.5f;
+    public float height = 0.6f;
+    public float lengthSide = 0.5f;
 
     private void Awake()
     {

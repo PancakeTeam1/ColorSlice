@@ -55,18 +55,17 @@ public class GameManager : Manager<GameManager>
         ModeCondition = Mode.Canvas;
     }
 
-    public void SetBandMode(Vector2Int CubeInCanvas)
+    public void StartBandMode()
     {
         if (ModeCondition != Mode.Band)
         {
             ModeCondition = Mode.Band;
             cam.ViewSwitch = false;
-            gridController.GetColorsInRow(CubeInCanvas.y, out colors);
-            CurrentCube = gridController.Cubes[CubeInCanvas.x, CubeInCanvas.y];
-            StartCoroutine(bandGenerator.StartGeneration(colors));
+            CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x, CurrentCube.PosInCanvas.y];
+            StartCoroutine(bandGenerator.StartGeneration());
         }
     }
-    
+
     public void SetNextCube()
     {
         CubesPainted += 1;
@@ -95,6 +94,7 @@ public class GameManager : Manager<GameManager>
                 else
                 {
                     CurrentCube = gridController.Cubes[0, posCube.y - 1];  // set CurrentCube to the next row
+                    SetFrame();
                 }
             }
         }
@@ -103,7 +103,18 @@ public class GameManager : Manager<GameManager>
             Vector2Int posCube = CurrentCube.PosInCanvas;
             if (posCube.y != gridController.ArtHeight - 1)
                 CurrentCube = gridController.Cubes[posCube.x, posCube.y + 1];
+            else
+            {
+                CurrentCube = gridController.Cubes[posCube.x + 1, 0];  // set CurrentCube to the next row
+                SetFrame();
+            }
         }
+    }
+
+    public void SetFrame()
+    {
+        frame.SetFrame(frameCondition, CurrentCube.PosInCanvas);
+        gridController.SetFrame(frameCondition, CurrentCube.PosInCanvas);
     }
 
     public void PressCube(CubeInCanvas pressed)
@@ -119,14 +130,8 @@ public class GameManager : Manager<GameManager>
         else
         {
             CurrentCube = pressed;
-            frameCondition = Frame.Horizontal;
         }
-        frame.SetFrame(frameCondition, pressed.PosInCanvas);
-    }
-
-    public void OnClickStart()
-    {
-        SetBandMode(CurrentCube.PosInCanvas);
+        SetFrame();
     }
 
     public void CubeToCanvas(CubeInBandMovement other)
@@ -137,6 +142,7 @@ public class GameManager : Manager<GameManager>
             Color colOther = other.mat.color;
             Color colCur = CurrentCube.mat.color;
             other.enabled = false;
+            other.transform.parent = null;
             CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
             GameObject particle = cube.transform.GetChild(0).gameObject;
             particle.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = colCur;
@@ -164,6 +170,7 @@ public class GameManager : Manager<GameManager>
     private IEnumerator MissCoolDown()
     {
         HitButton.SetActive(false);
+        bandGenerator.Miss();
         yield return new WaitForSeconds(MissDelay);
         HitButton.SetActive(true);
     }

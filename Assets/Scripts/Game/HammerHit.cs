@@ -14,7 +14,21 @@ public class HammerHit : MonoBehaviour
 
     public void Hit()
     {
-        Animator.SetTrigger("StartHit");
+        if (GameManager.Instance.ModeCondition == GameManager.Mode.Band)
+            Animator.SetTrigger("StartHit");    
         gameManager.IsHitbutton = true;
+    }
+
+    private IEnumerator StartTimer()
+    {
+        cooldown = true;
+        yield return new WaitForSeconds(delay);
+        cooldown = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!cooldown)
+            StartCoroutine(StartTimer());
     }
 }

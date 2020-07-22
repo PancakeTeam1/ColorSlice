@@ -20,15 +20,18 @@ public class InGameImageLoader : Manager<InGameImageLoader>
     }
 
     public float MaxDifference = 0.15f;
-    private List<Color> NormalizedColors = new List<Color>();
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     public Color[,] CreatePicture(int NumberOfPicture)
     {
         Picture PixArt = PixArts[NumberOfPicture];
         int CurrentRowSize = PixArt.RowSize;
         int CurrentColumnSize = PixArt.ColumnSize;
-        NormalizedColors.Clear();
-        NormalizedColors = new List<Color>();
+        List<Color> NormalizedColors = new List<Color>();
         Color[,] NotNormalizedColors = AnalysePixel.Analyse(PixArt.Texture, CurrentRowSize, CurrentColumnSize, PixArt.OffsetX, PixArt.OffsetY, PixArt.PaddingX, PixArt.PaddingY);
 
         for(int row = 0; row < CurrentRowSize; row++)
@@ -59,12 +62,19 @@ public class InGameImageLoader : Manager<InGameImageLoader>
                 }
             }
         }
+        GridController.Instance.AllColorsInCanvas = NormalizedColors.ToArray();
         return NotNormalizedColors;
     }
     
-    public List<Color> GetAllColors()
+    public List<Color> GetAllColors(int numberPicture)
     {
-        return NormalizedColors;
+        //if (PixArts[numberPicture].NormalizedColors == null)
+        //{
+        //    Debug.LogError("Изображение не создано на холсте, поэтому цвета ты не получишь");
+        //    return null;
+        //}
+        //return PixArts[numberPicture].NormalizedColors;
+        return null;
     }
 
     public float CalculateDistanceBetweenColors(Color BaseColor, Color CompareColor)

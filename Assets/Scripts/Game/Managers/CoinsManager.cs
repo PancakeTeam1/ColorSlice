@@ -18,7 +18,7 @@ public class CoinsManager : Manager<CoinsManager>
     private void Start()
     {
         CoinsAmount =  PlayerPrefs.GetInt("CoinsAmount");
-        CoinsText.text = CoinsAmount.ToString();
+        //CoinsText.text = CoinsAmount.ToString();
     }
 
     public void AddCoins(int CoinsToAdd)

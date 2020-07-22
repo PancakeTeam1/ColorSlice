@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CubeInBandMovement : MonoBehaviour
 {
-    public float speed = 15f;
     private BandGenerator generator;
     private CubeToCanvasMovement movement;
     [HideInInspector]
@@ -24,19 +23,24 @@ public class CubeInBandMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 changed = (generator.endPoint.localPosition - generator.startPoint.localPosition).normalized * speed * Time.deltaTime;
+        Vector3 changed = (generator.endPoint.localPosition - generator.startPoint.localPosition).normalized * generator.currentSpeed * Time.deltaTime;
         transform.Translate(changed);
         if ((transform.localPosition - generator.startPoint.localPosition).sqrMagnitude >= (generator.endPoint.localPosition - generator.startPoint.localPosition).sqrMagnitude)
         {
             gameObject.SetActive(false);
+            if (mat.color == gameManager.CurrentCube.normal)
+            {
+                generator.Skip();
+            }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Axe")
-        {
-            gameManager.CubeToCanvas(this);
-        }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Axe")
+        {
+            generator.Hit();
+            gameManager.CubeToCanvas(this);
+        }
     }
 }

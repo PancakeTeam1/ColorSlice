@@ -5,9 +5,17 @@ using UnityEngine;
 public class BandGenerator : Manager<BandGenerator>
 {
     public GameObject PrefabCube;
+    public float StartChanceKoef = 0.3f;
     public float Distance;
-    private Color[] colors;
-
+    public float startSpeed = 2f;
+    public float speedGrow;
+    public float SkipDelay = 1f;
+    public float SkipDecrease;
+    private Color color;
+    private Color[] allColors;
+    private float currentChance;
+    private float cons;
+    private float koef;
     [HideInInspector]
     public Transform startPoint;
     [HideInInspector]
@@ -16,6 +24,8 @@ public class BandGenerator : Manager<BandGenerator>
     private Vector3 lastCubePos;
     private GameObject lastCube;
     private float currentDistance;
+    public float currentSpeed;
+    private bool isSkipDelay;
 
     private Pooler pooler;
     private GameManager gameManager;
@@ -24,34 +34,47 @@ public class BandGenerator : Manager<BandGenerator>
 
     private void Awake()
     {
+        currentSpeed = startSpeed;
         startPoint = transform.Find("StartPoint");
         endPoint = transform.Find("EndPoint");
     }
 
     private void Start()
     {
+        allColors = GridController.Instance.AllColorsInCanvas;
+        koef = StartChanceKoef * allColors.Length;
+        currentChance = cons * koef;
         pooler = Pooler.instance;
         gameManager = GameManager.Instance;
-        //imageLoader = InGameImageLoader.Instance;
-        //GetColorsFromImage();
     }
 
-    public IEnumerator StartGeneration(Color[] colors)
+    public IEnumerator StartGeneration()
     {
+        float chance = 100 / allColors.Length;
+        cons = -0.0001f * Mathf.Pow(chance, 3) + 0.01f * Mathf.Pow(chance, 2) + 0.1483f * chance - 0.8432f;
         yield return new WaitForSeconds(1);
-        this.colors = GridController.MakeSet<Color>(colors);
-        colors = this.colors;
         while (true)
         {
             if (lastCube == null || currentDistance >= Distance)
             {
-                //isDeactivated = false;
                 lastCube = pooler.SpawnFromPull(PrefabCube, startPoint.position, transform);
                 GameObject particle = lastCube.transform.GetChild(0).gameObject;
                 particle.SetActive(false);
                 lastCube.GetComponent<CubeToCanvasMovement>().statement = false;
                 lastCube.GetComponent<CubeInBandMovement>().enabled = true;
-                lastCube.GetComponent<Renderer>().materials[0].color = colors[Random.Range(0, colors.Length)];
+                if (Random.Range(0, 100) < currentChance)
+                {
+                    lastCube.GetComponent<Renderer>().materials[0].color = gameManager.CurrentCube.normal;
+                    currentChance = cons * koef;
+                }
+                else
+                {
+                    currentChance += cons;
+                    Color color = allColors[Random.Range(0, allColors.Length)];
+                    while (color == gameManager.CurrentCube.normal)
+                        color = allColors[Random.Range(0, allColors.Length)];
+                    lastCube.GetComponent<Renderer>().materials[0].color = color;
+                }
                 currentDistance = 0;
                 lastCubePos = startPoint.localPosition;
             }
@@ -61,6 +84,32 @@ public class BandGenerator : Manager<BandGenerator>
                 lastCubePos = lastCube.transform.localPosition;
             }
             yield return null;
+        }
+    }
+
+    public void Hit()
+    {
+        currentSpeed += speedGrow;
+    }
+
+    public void Miss()
+    {
+        currentSpeed = startSpeed + (currentSpeed - startSpeed) / 2;
+    }
+
+    public IEnumerator SkipDelayStart()
+    {
+        isSkipDelay = true;
+        yield return new WaitForSeconds(SkipDelay);
+        isSkipDelay = false;
+    }
+
+    public void Skip()
+    { 
+        if (!isSkipDelay)
+        {
+            StartCoroutine(SkipDelayStart());
+            currentSpeed -= SkipDecrease;
         }
     }
 

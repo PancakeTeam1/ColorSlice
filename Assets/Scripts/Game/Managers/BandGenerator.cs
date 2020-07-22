@@ -47,6 +47,8 @@ public class BandGenerator : Manager<BandGenerator>
             {
                 //isDeactivated = false;
                 lastCube = pooler.SpawnFromPull(PrefabCube, startPoint.position, transform);
+                GameObject particle = lastCube.transform.GetChild(0).gameObject;
+                particle.SetActive(false);
                 lastCube.GetComponent<CubeToCanvasMovement>().statement = false;
                 lastCube.GetComponent<CubeInBandMovement>().enabled = true;
                 lastCube.GetComponent<Renderer>().materials[0].color = colors[Random.Range(0, colors.Length)];

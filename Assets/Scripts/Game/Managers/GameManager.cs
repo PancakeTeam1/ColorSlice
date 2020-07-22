@@ -125,10 +125,15 @@ public class GameManager : Manager<GameManager>
     {
         if (IsHitbutton)
         {
+            IsHitbutton = false;
             Color colOther = other.mat.color;
             Color colCur = CurrentCube.mat.color;
             other.enabled = false;
             CubeToCanvasMovement cube = other.GetComponent<CubeToCanvasMovement>();
+            GameObject particle = cube.transform.GetChild(0).gameObject;
+            particle.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = colCur;
+            particle.SetActive(true);
+            //cube.GetComponentInChildren<ParticleSystem>().gameObject.SetActive(true);
             if (colOther.r == colCur.r && colOther.g == colCur.g && colOther.b == colCur.b)
             {
                 cube.statement = true;
@@ -143,7 +148,6 @@ public class GameManager : Manager<GameManager>
                 StartCoroutine(MissCoolDown());
                 cube.gameObject.SetActive(false);
             }
-            IsHitbutton = false;
         }
     }
 

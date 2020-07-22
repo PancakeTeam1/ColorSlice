@@ -8,6 +8,7 @@ public class GameManager : Manager<GameManager>
     [HideInInspector] public CubeInCanvas CurrentCube;
     [HideInInspector] public int CubesPainted;
     [HideInInspector] public bool IsHitbutton = false;
+    
     public float MissDelay = 1f;
     public GameObject HitButton;
 
@@ -15,6 +16,8 @@ public class GameManager : Manager<GameManager>
     private CameraController cam;
     private BandGenerator bandGenerator;
     private CoinsManager coinsManager;
+    private AudioController audioController;
+
     private Color[] colors;
     [HideInInspector] public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
@@ -36,6 +39,7 @@ public class GameManager : Manager<GameManager>
 
     private void Awake()
     {
+        audioController = AudioController.Instance;
         coinsManager = CoinsManager.Instance;
         frame = FrameController.Instance;
         bandGenerator = BandGenerator.Instance;
@@ -136,6 +140,7 @@ public class GameManager : Manager<GameManager>
             //cube.GetComponentInChildren<ParticleSystem>().gameObject.SetActive(true);
             if (colOther.r == colCur.r && colOther.g == colCur.g && colOther.b == colCur.b)
             {
+                audioController.PlayRighSound();
                 cube.statement = true;
                 cube.place = CurrentCube;
                 coinsManager.AddCoins(5);
@@ -144,6 +149,7 @@ public class GameManager : Manager<GameManager>
             }
             else
             {
+                audioController.PlayWrongSound();
                 coinsManager.ClearStreak();
                 StartCoroutine(MissCoolDown());
                 cube.gameObject.SetActive(false);

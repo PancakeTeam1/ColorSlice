@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5127476073842940322}
   - component: {fileID: 6957305397428427022}
   - component: {fileID: -3705543750585628474}
-  - component: {fileID: 3210242721405740181}
+  - component: {fileID: 6464490175089003202}
   m_Layer: 0
   m_Name: BandCube
   m_TagString: Untagged
@@ -93,12 +93,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624c13ebb3a888042ba8e4419097e753, type: 3}
+  m_Script: {fileID: 11500000, guid: e301e2472d2d166429178c95292e334e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  statement: 0
-  place: {fileID: 0}
+  speed: 3
+  mat: {fileID: 0}
 --- !u!65 &6957305397428427022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -128,7 +127,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3210242721405740181
+--- !u!114 &6464490175089003202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,11 +136,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd32185a0f58876408703521bc7bdead, type: 3}
+  m_Script: {fileID: 11500000, guid: 295db4cf9c83db840b71dedb6c54ad37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  mat: {fileID: 0}
+  Speed: 5
+  statement: 0
+  place: {fileID: 0}
 --- !u!1 &5869130589453515253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,7 +4909,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5ffa7617057f8db4e8134309d80cb9f6, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

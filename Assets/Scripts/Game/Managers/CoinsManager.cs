@@ -6,11 +6,14 @@ using UnityEngine;
 public class CoinsManager : Manager<CoinsManager>
 {
     [HideInInspector] public int CoinsAmount;
+    public GameObject[] Effects;
+    public TextMeshProUGUI CoinsText;
+
+    public int CubesToIncreaseBonusByOne = 2;
+    public float TimeToShowEffect = 5f;
+
     private int cubeStreak = 0;
     private int streakBonus = 1;
-    public TextMeshProUGUI CoinsText;
-    public int CubesToIncreaseBonusByOne = 2;
-    public GameObject[] Effects;
 
     private void Start()
     {
@@ -50,7 +53,7 @@ public class CoinsManager : Manager<CoinsManager>
     private IEnumerator EffectCoroutine(int effectIndex)
     {
         Effects[effectIndex].SetActive(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(TimeToShowEffect);
         Effects[effectIndex].SetActive(false);
     }
 }

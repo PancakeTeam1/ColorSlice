@@ -17,6 +17,8 @@ public class GameManager : Manager<GameManager>
     private BandGenerator bandGenerator;
     private CoinsManager coinsManager;
     private AudioController audioController;
+    private InGameImageLoader imageLoader;
+    private PixelArts pixelArts;
 
     private Color[] colors;
     [HideInInspector] public Mode ModeCondition;
@@ -45,6 +47,7 @@ public class GameManager : Manager<GameManager>
         bandGenerator = BandGenerator.Instance;
         gridController = GridController.Instance;
         cam = Camera.main.GetComponent<CameraController>();
+        imageLoader = InGameImageLoader.Instance;
     }
 
     private void Start()
@@ -81,6 +84,7 @@ public class GameManager : Manager<GameManager>
                 {
                     if(CubesPainted == gridController.SquareOfArt)  // if the art if completly painted over 
                     {
+                        pixelArts.Pushback(imageLoader.PixArts[0].Texture);     // adds completed picture to array
                         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
                     }
                     else

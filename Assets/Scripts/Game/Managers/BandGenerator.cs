@@ -94,7 +94,7 @@ public class BandGenerator : Manager<BandGenerator>
 
     public void Miss()
     {
-        currentSpeed = startSpeed + (currentSpeed - startSpeed) / 2;
+        currentSpeed = startSpeed;
     }
 
     public IEnumerator SkipDelayStart()
@@ -110,6 +110,8 @@ public class BandGenerator : Manager<BandGenerator>
         {
             StartCoroutine(SkipDelayStart());
             currentSpeed -= SkipDecrease;
+            if (currentSpeed < startSpeed)
+                currentSpeed = startSpeed;
         }
     }
 

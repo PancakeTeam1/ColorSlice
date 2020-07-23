@@ -54,7 +54,7 @@ MeshRenderer:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5f1d9c73bebb742a9d4cef96c3175f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   mat: {fileID: 0}
 --- !u!65 &6957305397428427022
 BoxCollider:

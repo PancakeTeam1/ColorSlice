@@ -52,4 +52,20 @@ MonoBehaviour:
     OffsetY: 7
     PaddingX: 4
     PaddingY: 4
+  - name: Watermelon
+    Texture: {fileID: 2800000, guid: 4fb2897adc7d8814ea349f145aade67b, type: 3}
+    RowSize: 15
+    ColumnSize: 15
+    OffsetX: 7
+    OffsetY: 0
+    PaddingX: 4
+    PaddingY: 4
+  - name: Bird
+    Texture: {fileID: 2800000, guid: d3ff38adafa330b468e168292d5763fe, type: 3}
+    RowSize: 19
+    ColumnSize: 14
+    OffsetX: 3
+    OffsetY: 5
+    PaddingX: 2
+    PaddingY: 2
   MaxDifference: 0.15

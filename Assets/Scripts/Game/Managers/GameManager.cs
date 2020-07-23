@@ -23,7 +23,7 @@ public class GameManager : Manager<GameManager>
     private Color[] colors;
     [HideInInspector] public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
-    private Frame frameCondition = Frame.None;
+    private Frame frameCondition = Frame.Horizontal;
     private FrameController frame;
 
     public enum Mode

@@ -6,16 +6,12 @@ public class CubeInCanvas : MonoBehaviour
 {
     //Это не координата в пространстве, а координата в холсте
     [HideInInspector]public Vector2Int PosInCanvas;
-    [HideInInspector]
-    public Material mat;
+    [HideInInspector] public Material mat;
     private GameManager gameManager;
-    [HideInInspector]
-    public bool isFree = false;
-    [HideInInspector]
-    public Color blackWhite;
+    public bool isFree = true;
+    [HideInInspector] public Color blackWhite;
     private Color normalClarity;
-    [HideInInspector]
-    public Color normal;
+    [HideInInspector] public Color normal;
 
     private GridController gridController;
 

@@ -29,11 +29,8 @@ public class CubeInBandMovement : MonoBehaviour
         {
             gameObject.SetActive(false);
             if (mat.color == gameManager.CurrentCube.normal)
-
             {
-
-                generator.Skip();
-
+                generator.Skip();
             }
         }
     }

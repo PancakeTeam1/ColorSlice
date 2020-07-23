@@ -76,8 +76,18 @@ public class GameManager : Manager<GameManager>
         {
             Vector2Int posCube = CurrentCube.PosInCanvas;
 
-           
-                if (posCube.x != gridController.ArtWidth - 1)
+            if (posCube.x != gridController.ArtWidth - 1)
+            {
+                CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
+                //if (!CurrentCube.isFree)
+                //    for (int i = 0; i < gridController.ArtWidth)
+                //    {
+                //        gridController.Cubes[];
+                //    }
+            }
+            else  // if the row ends
+            {
+                if(posCube.y == 0 && posCube.x == gridController.ArtWidth - 1)  // if it was right bottom cube
                 {
                     CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
                 }

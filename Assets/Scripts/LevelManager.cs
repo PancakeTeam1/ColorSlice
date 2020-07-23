@@ -25,7 +25,7 @@ public class LevelManager : Manager<LevelManager>
         currentPicture = remainingPictures[Random.Range(0, remainingPictures.Count)];
     }
 
-    private void NextLevel()
+    public void NextLevel()
     {
         Level += 1;
         remainingPictures.Remove(currentPicture);

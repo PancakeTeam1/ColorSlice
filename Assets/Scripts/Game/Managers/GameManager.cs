@@ -14,6 +14,7 @@ public class GameManager : Manager<GameManager>
     public GameObject CongratsPanel;
 
     private GridController gridController;
+    private LevelManager levelManager;
     private CameraController cam;
     private BandGenerator bandGenerator;
     private CoinsManager coinsManager;
@@ -49,6 +50,7 @@ public class GameManager : Manager<GameManager>
         gridController = GridController.Instance;
         cam = Camera.main.GetComponent<CameraController>();
         imageLoader = InGameImageLoader.Instance;
+        levelManager = LevelManager.Instance;
     }
 
     private void Start()
@@ -172,8 +174,7 @@ public class GameManager : Manager<GameManager>
 
     public void LoadNextLevel()
     {
-        //set next pic
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+        levelManager.NextLevel();
     }
 
     private IEnumerator MissCoolDown()

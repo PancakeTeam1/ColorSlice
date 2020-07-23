@@ -22,8 +22,7 @@ public class LevelManager : Manager<LevelManager>
         imageLoader = InGameImageLoader.Instance;
         DontDestroyOnLoad(gameObject);
         remainingPictures = new List<InGameImageLoader.Picture>(imageLoader.PixArts);
-        currentPicture = remainingPictures[2];
-        //currentPicture = remainingPictures[Random.Range(0, remainingPictures.Count)];
+        currentPicture = remainingPictures[Random.Range(0, remainingPictures.Count)];
     }
 
     private void NextLevel()

@@ -11,6 +11,7 @@ public class GameManager : Manager<GameManager>
     
     public float MissDelay = 1f;
     public GameObject HitButton;
+    public GameObject CongratsPanel;
 
     private GridController gridController;
     private CameraController cam;
@@ -84,7 +85,9 @@ public class GameManager : Manager<GameManager>
                     if(CubesPainted == gridController.SquareOfArt)  // if the art if completly painted over 
                     {
                         pixelArts.Pushback(imageLoader.PixArts[0].Texture);     // adds completed picture to array
+                        CongratsPanel.SetActive(true);
                         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+
                     }
                     else
                     {
@@ -165,6 +168,12 @@ public class GameManager : Manager<GameManager>
                 cube.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void LoadNextLevel()
+    {
+        //set next pic
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
     }
 
     private IEnumerator MissCoolDown()

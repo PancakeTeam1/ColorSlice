@@ -45,6 +45,7 @@ public class FrameController : Manager<FrameController>
 
     public void ClearLine()
     {
+        line.positionCount = 0;
         line.SetPositions(new Vector3[0]);
     }
 }

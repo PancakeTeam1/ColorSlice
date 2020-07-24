@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchView : MonoBehaviour
+public class SwitchView : Manager<SwitchView>
 {
     private GameManager gameManager;
     private CameraController cameraController;
@@ -17,14 +17,11 @@ public class SwitchView : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    public void SwitchCameraView()
+    public void Switch()
     {
-        gameManager.ModeCondition = GameManager.Mode.Canvas;
-        cameraController.ViewSwitch = !cameraController.ViewSwitch;
-
-        // activate or deactivate all HUD
-        bandGenerator.SetActive(!bandGenerator.activeSelf);
-        smallHammer.SetActive(!smallHammer.activeSelf);
-        hitButton.SetActive(!hitButton.activeSelf);
+        if (gameManager.ModeCondition == GameManager.Mode.Band)
+        {
+            gameManager.StartCanvasMode();
+        }
     }
 }

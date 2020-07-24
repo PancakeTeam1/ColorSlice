@@ -26,6 +26,7 @@ public class BandGenerator : Manager<BandGenerator>
     private float currentDistance;
     public float currentSpeed;
     private bool isSkipDelay;
+    public bool started;
 
     private Pooler pooler;
     private GameManager gameManager;
@@ -53,7 +54,8 @@ public class BandGenerator : Manager<BandGenerator>
         float chance = 100 / allColors.Length;
         cons = -0.0001f * Mathf.Pow(chance, 3) + 0.01f * Mathf.Pow(chance, 2) + 0.1483f * chance - 0.8432f;
         yield return new WaitForSeconds(1);
-        while (true)
+        started = true;
+        while (started)
         {
             if (lastCube == null || currentDistance >= Distance)
             {

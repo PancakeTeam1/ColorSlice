@@ -24,7 +24,6 @@ public class GridController : Manager<GridController>
     private int square;
 
     [HideInInspector] public int SquareOfArt;
-    
     public float transparency;
     [HideInInspector] public float scaleValue;
     [HideInInspector] public CubeInCanvas[,] Cubes;
@@ -56,6 +55,18 @@ public class GridController : Manager<GridController>
         SpawnGrid();
         SetPicture(levelManager.currentPicture);
     }
+
+    //public void GetFree(Vector2Int pos, GameManager.Frame frame)
+    //{
+    //    if (frame == GameManager.Frame.Horizontal)
+    //    {
+    //        while (!Cubes[pos.x, pos.y].isFree)
+    //            if (pos.x != ArtWidth - 1)
+    //            {
+
+    //            }
+    //    }
+    //}
 
     void SpawnGrid()
     {
@@ -151,8 +162,16 @@ public class GridController : Manager<GridController>
                 //    if ((areas[u].x <= i) && (i <= (areas[u].x + areas[u].z)) && (areas[u].y <= j) && (areas[u].y + areas[u].w))
                 //    {
 
-                //    }
-                //}
+                da = false;
+                for (int u = 0; u < count; u++)
+                {
+                    if ((areas[u].x <= i) && (i <= (areas[u].x + areas[u].z)) && (areas[u].y <= j) && j <= (areas[u].y + areas[u].w))
+                    {
+                        da = true;
+                        break;
+                    }
+                }
+                Cubes[ArtWidth - i - 1, ArtHeight - j - 1].SetColor(colors[i, j], da);
             }
         SquareOfArt = ArtHeight * ArtWidth;
         gameManager.CubesPainted = 0;

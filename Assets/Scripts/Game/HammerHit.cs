@@ -8,9 +8,13 @@ public class HammerHit : MonoBehaviour
     private GameManager gameManager;
     private bool cooldown;
     private float delay = 0.3f;
+    public Vector3 pos;
+    public Quaternion rot;
 
     private void Awake()
     {
+        pos = transform.localPosition;
+        rot = transform.localRotation;
         Animator = this.GetComponent<Animator>();
         gameManager = GameManager.Instance;
     }

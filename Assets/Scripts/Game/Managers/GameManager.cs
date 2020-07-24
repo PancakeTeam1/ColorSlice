@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class GameManager : Manager<GameManager>
 {
-    [HideInInspector] public CubeInCanvas CurrentCube;
+    public CubeInCanvas CurrentCube;
     [HideInInspector] public int CubesPainted;
     [HideInInspector] public bool IsHitbutton = false;
-    
+    public GameObject smallHam;
     public float MissDelay = 1f;
     public GameObject HitButton;
+    public GameObject CongratsPanel;
+    private int remaining = 0;
 
     private GridController gridController;
     private CameraController cam;
@@ -21,7 +23,7 @@ public class GameManager : Manager<GameManager>
     private PixelArts pixelArts;
 
     private Color[] colors;
-    [HideInInspector] public Mode ModeCondition;
+    public Mode ModeCondition;
     // показывает, какая рамка отображается на данный момент
     private Frame frameCondition = Frame.Horizontal;
     private FrameController frame;
@@ -34,7 +36,6 @@ public class GameManager : Manager<GameManager>
 
     public enum Frame
     {
-        None,
         Horizontal,
         Vertical
     }
@@ -57,17 +58,19 @@ public class GameManager : Manager<GameManager>
 
     public void StartBandMode()
     {
-        if (ModeCondition != Mode.Band)
+        if (ModeCondition != Mode.Band && CurrentCube != null)
         {
             ModeCondition = Mode.Band;
             cam.ViewSwitch = false;
             CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x, CurrentCube.PosInCanvas.y];
             StartCoroutine(bandGenerator.StartGeneration());
+            smallHam.SetActive(true);
         }
     }
 
     public void SetNextCube()
     {
+        remaining += 1;
         CubesPainted += 1;
         if (frameCondition == Frame.Horizontal)
         {
@@ -76,6 +79,26 @@ public class GameManager : Manager<GameManager>
             if (posCube.x != gridController.ArtWidth - 1)
             {
                 CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
+                posCube = CurrentCube.PosInCanvas;
+                if (!CurrentCube.isFree)
+                {
+                    if (CurrentCube.PosInCanvas.y == gridController.ArtHeight - 1)
+                        StartCanvasMode();
+                    else
+                    {
+                        CurrentCube = gridController.Cubes[0, CurrentCube.PosInCanvas.y - 1];
+                        while (!CurrentCube.isFree && CurrentCube.PosInCanvas.x != posCube.x)
+                            CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x + 1, CurrentCube.PosInCanvas.y];
+                        if (CurrentCube.PosInCanvas.x == posCube.x)
+                        {
+                            StartCanvasMode();
+                        }
+                    }
+                }
+                if (CurrentCube.PosInCanvas.y == gridController.ArtHeight - 1)
+                    StartCanvasMode();
+                else
+                    SetFrame();
             }
             else  // if the row ends
             {
@@ -125,7 +148,6 @@ public class GameManager : Manager<GameManager>
                 frameCondition = (Frame)((int)frameCondition + 1);
             else
                 frameCondition = Frame.Horizontal;
-            
         }
         else
         {
@@ -153,8 +175,6 @@ public class GameManager : Manager<GameManager>
                 audioController.PlayRighSound();
                 cube.statement = true;
                 cube.place = CurrentCube;
-                coinsManager.AddCoins(5);
-                coinsManager.AddCubeToStreak();
                 SetNextCube();
             }
             else
@@ -173,5 +193,18 @@ public class GameManager : Manager<GameManager>
         bandGenerator.Miss();
         yield return new WaitForSeconds(MissDelay);
         HitButton.SetActive(true);
+    }
+
+    public void StartCanvasMode()
+    {
+        CurrentCube = null;
+        frame.ClearLine();
+        ModeCondition = Mode.Canvas;
+        cam.ViewSwitch = !cam.ViewSwitch;
+        bandGenerator.started = false;
+        HammerHit ham = smallHam.GetComponent<HammerHit>();
+        smallHam.transform.localPosition = ham.pos;
+        smallHam.transform.localRotation = ham.rot;
+        smallHam.SetActive(false);
     }
 }

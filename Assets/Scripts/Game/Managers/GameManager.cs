@@ -12,9 +12,9 @@ public class GameManager : Manager<GameManager>
     public float MissDelay = 1f;
     public GameObject HitButton;
     public GameObject CongratsPanel;
+    private int remaining = 0;
 
     private GridController gridController;
-    private LevelManager levelManager;
     private CameraController cam;
     private BandGenerator bandGenerator;
     private CoinsManager coinsManager;
@@ -49,7 +49,6 @@ public class GameManager : Manager<GameManager>
         gridController = GridController.Instance;
         cam = Camera.main.GetComponent<CameraController>();
         imageLoader = InGameImageLoader.Instance;
-        levelManager = LevelManager.Instance;
     }
 
     private void Start()
@@ -73,6 +72,11 @@ public class GameManager : Manager<GameManager>
     {
         remaining += 1;
         CubesPainted += 1;
+        if(CubesPainted == gridController.SquareOfArt)  // if the art if completly painted over 
+                    {
+                        pixelArts.Pushback(imageLoader.PixArts[0].Texture);     // adds completed picture to array
+                        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                    }
         if (frameCondition == Frame.Horizontal)
         {
             Vector2Int posCube = CurrentCube.PosInCanvas;
@@ -80,68 +84,74 @@ public class GameManager : Manager<GameManager>
             if (posCube.x != gridController.ArtWidth - 1)
             {
                 CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
-                //if (!CurrentCube.isFree)
-                //    for (int i = 0; i < gridController.ArtWidth)
-                //    {
-                //        gridController.Cubes[];
-                //    }
+                posCube = CurrentCube.PosInCanvas;
+                if (!CurrentCube.isFree)
+                {
+                    if (CurrentCube.PosInCanvas.y == 0)
+                        StartCanvasMode();
+                    else
+                    {
+                        CurrentCube = gridController.Cubes[0, CurrentCube.PosInCanvas.y - 1];
+                        while (!CurrentCube.isFree && CurrentCube.PosInCanvas.x != posCube.x)
+                            CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x + 1, CurrentCube.PosInCanvas.y];
+                        if (CurrentCube.PosInCanvas.x == posCube.x)
+                        {
+                            StartCanvasMode();
+                        }
+                    }
+                }
+                if (CurrentCube.PosInCanvas.y == 0)
+                    StartCanvasMode();
+                else
+                    SetFrame();
             }
             else  // if the row ends
             {
-                if(posCube.y == 0 && posCube.x == gridController.ArtWidth - 1)  // if it was right bottom cube
+                CurrentCube = gridController.Cubes[0, CurrentCube.PosInCanvas.y - 1];
+                while (!CurrentCube.isFree && CurrentCube.PosInCanvas.x != posCube.x)
+                    CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x + 1, CurrentCube.PosInCanvas.y];
+                if (CurrentCube.PosInCanvas.x == posCube.x)
                 {
-                    CurrentCube = gridController.Cubes[posCube.x + 1, posCube.y];
+                    StartCanvasMode();
                 }
-                else  // if the row ends
-                {
-                    if (posCube.y == 0 && posCube.x == gridController.ArtWidth - 1)  // if it was right bottom cube
-                    {
-<<<<<<< Updated upstream
-                        pixelArts.Pushback(imageLoader.PixArts[0].Texture);     // adds completed picture to array
-                        CongratsPanel.SetActive(true);
-                        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-
-=======
-                        if (CubesPainted == gridController.SquareOfArt)  // if the art if completly painted over 
-                        {
-                            pixelArts.Pushback(imageLoader.PixArts[0].Texture);     // adds completed picture to array
-                            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-                        }
-                        else
-                        {
-                            CurrentCube = gridController.Cubes[0, gridController.ArtHeight - 1];  // Set CurrebtCube to start position
-                        }
->>>>>>> Stashed changes
-                    }
-                    else
-                    {
-                        CurrentCube = gridController.Cubes[0, posCube.y - 1];  // set CurrentCube to the next row
-                        SetFrame();
-                    }
-                }
-            
+            }
         }
         else
         {
             Vector2Int posCube = CurrentCube.PosInCanvas;
-            if (posCube.y != gridController.ArtHeight - 1)
-                CurrentCube = gridController.Cubes[posCube.x, posCube.y + 1];
-            else
+
+            if (posCube.x != 0)
             {
-                CurrentCube = gridController.Cubes[posCube.x + 1, 0];  // set CurrentCube to the next row
-                SetFrame();
+                CurrentCube = gridController.Cubes[posCube.x, posCube.y + 1];
+                posCube = CurrentCube.PosInCanvas;
+                if (!CurrentCube.isFree)
+                {
+                    if (CurrentCube.PosInCanvas.x == gridController.ArtWidth - 1)
+                        StartCanvasMode();
+                    else
+                    {
+                        CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x + 1, 0];
+                        while (!CurrentCube.isFree && CurrentCube.PosInCanvas.y != posCube.y)
+                            CurrentCube = gridController.Cubes[CurrentCube.PosInCanvas.x, CurrentCube.PosInCanvas.y + 1];
+                        if (CurrentCube.PosInCanvas.y == posCube.y)
+                        {
+                            StartCanvasMode();
+                        }
+                    }
+                }
+                if (CurrentCube.PosInCanvas.y == gridController.ArtWidth - 1)
+                    StartCanvasMode();
+                else
+                    SetFrame();
             }
         }
     }
-
 
     public void SetFrame()
     {
         frame.SetFrame(frameCondition, CurrentCube.PosInCanvas);
         gridController.SetFrame(frameCondition, CurrentCube.PosInCanvas);
     }
-
-
 
     public void PressCube(CubeInCanvas pressed)
     {
@@ -188,11 +198,6 @@ public class GameManager : Manager<GameManager>
                 cube.gameObject.SetActive(false);
             }
         }
-    }
-
-    public void LoadNextLevel()
-    {
-        levelManager.NextLevel();
     }
 
     private IEnumerator MissCoolDown()

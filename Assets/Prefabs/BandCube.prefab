@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5456812439970720459}
   - component: {fileID: 5456812439970720458}
   - component: {fileID: 5456812439970720457}
+  - component: {fileID: -5127476073842940322}
   - component: {fileID: 6957305397428427022}
   - component: {fileID: -3705543750585628474}
   - component: {fileID: 6464490175089003202}
-  - component: {fileID: -3586834967067472052}
   m_Layer: 0
   m_Name: BandCube
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MeshRenderer:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -93,11 +93,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: bd32185a0f58876408703521bc7bdead, type: 3}
-=======
-  m_Script: {fileID: 11500000, guid: e301e2472d2d166429178c95292e334e, type: 3}
->>>>>>> Stashed changes
+  m_Script: {fileID: 11500000, guid: 3c5f1d9c73bebb742a9d4cef96c3175f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 0}
@@ -139,29 +135,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: 624c13ebb3a888042ba8e4419097e753, type: 3}
-=======
-  m_Script: {fileID: 11500000, guid: 295db4cf9c83db840b71dedb6c54ad37, type: 3}
->>>>>>> Stashed changes
+  m_Script: {fileID: 11500000, guid: ef1a294c3e2d7ea46a338a9ec922fb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
   statement: 0
   place: {fileID: 0}
---- !u!114 &-3586834967067472052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5456812439970720439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5f1d9c73bebb742a9d4cef96c3175f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mat: {fileID: 0}
 --- !u!1 &5869130589453515253
 GameObject:
   m_ObjectHideFlags: 0

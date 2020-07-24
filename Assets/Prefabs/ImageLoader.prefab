@@ -40,8 +40,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7366132585512730685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fa95cc866d8a34cac9955b196085e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 20a66c23ba6120c47b012ad9a4b4858f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PixArts: []
+  PixArts:
+  - name: 
+    Texture: {fileID: 2800000, guid: aded893650220d64c87b7908b988aca9, type: 3}
+    RowSize: 23
+    ColumnSize: 28
+    OffsetX: 8
+    OffsetY: 7
+    PaddingX: 4
+    PaddingY: 4
   MaxDifference: 0.15

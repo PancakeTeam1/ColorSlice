@@ -6,16 +6,12 @@ public class CubeInCanvas : MonoBehaviour
 {
     //Это не координата в пространстве, а координата в холсте
     [HideInInspector]public Vector2Int PosInCanvas;
-    [HideInInspector]
-    public Material mat;
+    [HideInInspector] public Material mat;
     private GameManager gameManager;
-    [HideInInspector]
-    public bool isFree = false;
-    [HideInInspector]
-    public Color blackWhite;
+    public bool isFree = true;
+    [HideInInspector] public Color blackWhite;
     private Color normalClarity;
-    [HideInInspector]
-    public Color normal;
+    [HideInInspector] public Color normal;
 
     private GridController gridController;
 
@@ -39,18 +35,23 @@ public class CubeInCanvas : MonoBehaviour
 
     }
 
-    public void SetColor(Color color)
+    public void SetColor(Color color, bool isFree)
     {
+        this.isFree = isFree;
         normal = color;
         normalClarity = new Color(color.r, color.g, color.b, gridController.transparency);
         float blAndWh = (color.r + color.g + color.b) / 3 + gridController.bright;
         blackWhite = new Color(blAndWh, blAndWh, blAndWh, gridController.transparency);
-        mat.color = blackWhite;
+        if (isFree)
+            mat.color = blackWhite;
+        else
+            mat.color = normal;
     }
 
     public void SetInFrame()
     {
-        mat.color = normalClarity;
+        if (isFree)
+            mat.color = normalClarity;
     }
 
     public void DeleteFromFrame()

@@ -221,7 +221,7 @@ MonoBehaviour:
   startSpeed: 2
   speedGrow: 0.3
   SkipDelay: 1
-  SkipDecrease: 0.3
+  SkipDecrease: 0.6
   startPoint: {fileID: 0}
   endPoint: {fileID: 0}
   currentSpeed: 0
@@ -634,8 +634,8 @@ MonoBehaviour:
   tex: {fileID: 2800000, guid: aded893650220d64c87b7908b988aca9, type: 3}
   ObjectToSpawn: {fileID: 3611290656094942886, guid: 9e8c05f1c4b08d240b64a51bdba60aa7,
     type: 3}
-  ArtWidth: 10000
-  ArtHeight: 10000
+  ArtWidth: 0
+  ArtHeight: 0
   ArtpixelOffset: 1
   bright: 0.2
   CompositionKoef: 0.7
@@ -644,7 +644,6 @@ MonoBehaviour:
   count2: 5
   square1: 40
   square2: 15
-  Indent: 3
   SquareOfArt: 0
   transparency: 0.6
   scaleValue: 0
@@ -838,7 +837,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
+  m_BackGroundColor: {r: 0.6273585, g: 0.774524, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

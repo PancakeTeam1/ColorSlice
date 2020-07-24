@@ -13,14 +13,15 @@ public class GridController : Manager<GridController>
     public int ArtHeight;
     public float ArtpixelOffset;
     public float bright = 0.2f;
-    public float CompositionKoef = 0.7f;
-    public float MultyplierKoef = 0.7f;
+    public float CompositionKoef = 0.3f;
+    public float MultyplierKoef = 0.3f;
     private Vector4[] areas;
-    public int count1 = 2;
+    public int count1 = 3;
     public int count2 = 5;
     private int count;
     public int square1 = 40;
     public int square2 = 15;
+    public int Indent = 3;
     private int square;
 
     [HideInInspector] public int SquareOfArt;
@@ -48,8 +49,7 @@ public class GridController : Manager<GridController>
         levelManager = LevelManager.Instance;
         imageLoader = InGameImageLoader.Instance;
         gameManager = GameManager.Instance;
-        Cubes = new CubeInCanvas[ArtWidth, ArtHeight];
-        CubesMaterial = new Material[ArtWidth, ArtHeight];
+        
         cam = Camera.main.GetComponent<CameraController>();
         picture = levelManager.currentPicture;
         SpawnGrid();
@@ -70,15 +70,17 @@ public class GridController : Manager<GridController>
 
     void SpawnGrid()
     {
-        int count = Random.Range(count1, count2);
+        count = Random.Range(count1, count2);
         int square = Random.Range(square1, square2);
         int[,] sides = GetRandomAreas(count, square);
         areas = new Vector4[count];
-        for (int i = 0; i < count; i++)
-            areas[i] = new Vector4(Random.Range(0, ArtWidth), Random.Range(0, ArtWidth), sides[i, 0], sides[i, 1]);
         tex = picture.Texture;
         ArtWidth = picture.RowSize;
         ArtHeight = picture.ColumnSize;
+        Cubes = new CubeInCanvas[ArtWidth, ArtHeight];
+        CubesMaterial = new Material[ArtWidth, ArtHeight];
+        for (int i = 0; i < count; i++)
+            areas[i] = new Vector4(Random.Range(Indent, ArtWidth - Indent), Random.Range(Indent, ArtWidth - Indent), sides[i, 0], sides[i, 1]);
         for (int x = 0; x < ArtWidth; x++)
         {
             for (int z = 0; z < ArtHeight; z++)
@@ -105,13 +107,13 @@ public class GridController : Manager<GridController>
         float squareMore = square;
         for (int i = 0; i < count; i++)
         {
-            multyples[i] = Random.Range(squareMore / (count - i) * CompositionKoef, squareMore / (count - i) * (1 - CompositionKoef));
+            multyples[i] = Random.Range(squareMore / (count - i) * (1 - CompositionKoef), squareMore / (count - i) * (1 + CompositionKoef));
             squareMore -= multyples[i];
         }
         for (int i = 0; i < count; i++)
         {
             float x = Mathf.Sqrt(multyples[i]);
-            x = Random.Range(x * MultyplierKoef, x * MultyplierKoef);
+            x = Random.Range(x * (1 - MultyplierKoef), x * (1 + MultyplierKoef));
             sides[i, 0] = (int)Mathf.Round(x);
             sides[i, 1] = (int)Mathf.Round(multyples[i] / x);
         }
@@ -152,15 +154,10 @@ public class GridController : Manager<GridController>
     private void SetPicture(int NumberPicture)
     {
         Color[,] colors = imageLoader.CreatePicture(NumberPicture);
+        bool da = false;
         for (int i = 0; i < ArtWidth; i++)
             for (int j = 0; j < ArtHeight; j++)
             {
-                Cubes[ArtWidth - i - 1, ArtHeight - j - 1].SetColor(colors[i, j]);
-                bool da = false;
-                //for (int u = 0; u < count; u++)
-                //{
-                //    if ((areas[u].x <= i) && (i <= (areas[u].x + areas[u].z)) && (areas[u].y <= j) && (areas[u].y + areas[u].w))
-                //    {
 
                 da = false;
                 for (int u = 0; u < count; u++)
@@ -170,6 +167,10 @@ public class GridController : Manager<GridController>
                         da = true;
                         break;
                     }
+                }
+                if (da)
+                {
+                    Debug.Log("asd");
                 }
                 Cubes[ArtWidth - i - 1, ArtHeight - j - 1].SetColor(colors[i, j], da);
             }

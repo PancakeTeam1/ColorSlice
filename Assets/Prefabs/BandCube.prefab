@@ -84,6 +84,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-5127476073842940322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456812439970720439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+<<<<<<< Updated upstream
+  m_Script: {fileID: 11500000, guid: bd32185a0f58876408703521bc7bdead, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: e301e2472d2d166429178c95292e334e, type: 3}
+>>>>>>> Stashed changes
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 0}
 --- !u!65 &6957305397428427022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -122,7 +139,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5456812439970720439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1a294c3e2d7ea46a338a9ec922fb30, type: 3}
+<<<<<<< Updated upstream
+  m_Script: {fileID: 11500000, guid: 624c13ebb3a888042ba8e4419097e753, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: 295db4cf9c83db840b71dedb6c54ad37, type: 3}
+>>>>>>> Stashed changes
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5

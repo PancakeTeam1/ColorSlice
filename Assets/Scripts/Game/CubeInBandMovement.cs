@@ -28,19 +28,26 @@ public class CubeInBandMovement : MonoBehaviour
         if ((transform.localPosition - generator.startPoint.localPosition).sqrMagnitude >= (generator.endPoint.localPosition - generator.startPoint.localPosition).sqrMagnitude)
         {
             gameObject.SetActive(false);
-            if (mat.color == gameManager.CurrentCube.normal)
-            {
+            if (mat.color == gameManager.CurrentCube.normal)
+            {
                 generator.Skip();
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Axe")
-        {
-            generator.Hit();
-            gameManager.CubeToCanvas(this);
-        }
+    private void OnTriggerEnter(Collider other)
+
+    {
+
+        if (other.tag == "Axe")
+
+        {
+
+            generator.Hit();
+
+            gameManager.CubeToCanvas(this);
+
+        }
+
     }
 }

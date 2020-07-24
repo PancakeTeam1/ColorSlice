@@ -65,19 +65,8 @@ public class InGameImageLoader : Manager<InGameImageLoader>
         GridController.Instance.AllColorsInCanvas = NormalizedColors.ToArray();
         return NotNormalizedColors;
     }
-    
-    public List<Color> GetAllColors(int numberPicture)
-    {
-        //if (PixArts[numberPicture].NormalizedColors == null)
-        //{
-        //    Debug.LogError("Изображение не создано на холсте, поэтому цвета ты не получишь");
-        //    return null;
-        //}
-        //return PixArts[numberPicture].NormalizedColors;
-        return null;
-    }
 
-    public float CalculateDistanceBetweenColors(Color BaseColor, Color CompareColor)
+    public static float CalculateDistanceBetweenColors(Color BaseColor, Color CompareColor)
     {
         float R = BaseColor.r - CompareColor.r;
         float G = BaseColor.g - CompareColor.g;
